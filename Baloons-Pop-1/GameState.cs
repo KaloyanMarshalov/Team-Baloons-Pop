@@ -1,33 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace PoppingBaloons
+﻿namespace PoppingBaloons
 {
-    class GameState
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    public class GameState
     {
-        baloonsState __st;
-        List<Tuple<string, int>> scoreboard;
+        private baloonsState state;
+        List<Tuple<string, int>> highScores;
 
         public GameState()
         {
-            __st = new baloonsState();
-
-
-
-            scoreboard = new List<Tuple<string, int>>();
+            state = new baloonsState();
+            highScores = new List<Tuple<string, int>>();
         }
-        ~GameState() { }
+
         void displayScoreboard()
         {
-            if (scoreboard.Count == 0)
+            if (highScores.Count == 0)
                 Console.WriteLine("The scoreboard is empty");
             else
             {
                 Console.WriteLine("Top performers:");
                 Action<Tuple<string, int>> print = elem => { Console.WriteLine(elem.Item1 + "  " + elem.Item2.ToString() + " turns "); };
-                scoreboard.ForEach(print);
+                highScores.ForEach(print);
             }
 
         }
@@ -72,9 +68,9 @@ namespace PoppingBaloons
             if (fst > 5)
                 Console.WriteLine("Indexes too big");
             else
-                end = __st.popBaloon(fst+1, snd+1);//if this turn ends the game, try to update the scoreboard
+                end = state.popBaloon(fst+1, snd+1);//if this turn ends the game, try to update the scoreboard
             if (end)
-                Console.WriteLine("Congratulations!!You popped all the baloons in" + __st.turnCounter + "moves!");
+                Console.WriteLine("Congratulations!!You popped all the baloons in" + state.turnCounter + "moves!");
                 updateScoreboard();
                 restart();
         }
@@ -86,13 +82,13 @@ namespace PoppingBaloons
                 Console.WriteLine("Enter Name:");
                 string s = Console.ReadLine();
                 Tuple<string, int> a = Tuple.Create<string, int>(s, count);
-                scoreboard.Add(a);
+                highScores.Add(a);
 
 
             };
-            if (scoreboard.Count < 5)
+            if (highScores.Count < 5)
             {
-                add(__st.turnCounter);
+                add(state.turnCounter);
                 return;
             }
             else
@@ -100,22 +96,22 @@ namespace PoppingBaloons
 
 
 
-                if (scoreboard.ElementAt<Tuple<string, int>>(4).Item2 >= __st.turnCounter)
+                if (highScores.ElementAt<Tuple<string, int>>(4).Item2 >= state.turnCounter)
                 {
-                    add(__st.turnCounter);
-                    scoreboard.RemoveRange(4, 1);//if the new name replaces one of the old ones, remove the old one
+                    add(state.turnCounter);
+                    highScores.RemoveRange(4, 1);//if the new name replaces one of the old ones, remove the old one
                 }
             }
-            scoreboard.Sort(delegate(Tuple<string, int> p1, Tuple<string, int> p2)//re-sort the list
+            highScores.Sort(delegate(Tuple<string, int> p1, Tuple<string, int> p2)//re-sort the list
                       {
                           return p1.Item2.CompareTo(p2.Item2);
                       });
-            __st = new baloonsState();
+            state = new baloonsState();
         }
 
         private void restart()
         {
-            __st = new baloonsState();
+            state = new baloonsState();
         }
 
     }
