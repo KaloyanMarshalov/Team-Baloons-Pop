@@ -3,11 +3,12 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
 
     public class Game
     {
         private BaloonsState state;
-        List<Tuple<string, int>> highScores;
+        private List<Tuple<string, int>> highScores;
 
         public Game()
         {
@@ -15,18 +16,26 @@
             highScores = new List<Tuple<string, int>>();
         }
 
-        void displayScoreboard()
+        private string DisplayScoreboard()
         {
+            StringBuilder stringBuilder = new StringBuilder();
+
             if (highScores.Count == 0)
-                Console.WriteLine("The scoreboard is empty");
+                stringBuilder.AppendLine("The scoreboard is empty");
             else
             {
-                Console.WriteLine("Top performers:");
-                Action<Tuple<string, int>> print = elem => { Console.WriteLine(elem.Item1 + "  " + elem.Item2.ToString() + " turns "); };
-                highScores.ForEach(print);
+                stringBuilder.AppendLine("Top performers:");
+
+                // TODO: Implement a Score and HighScore(list of Scores) class with overloaded ToString() methods
+                foreach (Tuple<string, int> score in this.highScores)
+                {
+                    stringBuilder.AppendLine(score.Item1 + "  " + score.Item2 + " turns ");
+                }
             }
 
+            return stringBuilder.ToString();
         }
+
         public void executeCommand(string s)
         {
             if (s == "exit")
@@ -41,7 +50,7 @@
                     if (s.Length == 3)
                     {
                         if (s == "top")
-                            displayScoreboard();
+                            DisplayScoreboard();
                         else
                         {//check input validation
                             int fst, snd;
