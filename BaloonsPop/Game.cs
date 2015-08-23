@@ -16,7 +16,7 @@
             highScores = new List<Tuple<string, int>>();
         }
 
-        private string DisplayScoreboard()
+        public string DisplayScoreboard()
         {
             StringBuilder stringBuilder = new StringBuilder();
 
