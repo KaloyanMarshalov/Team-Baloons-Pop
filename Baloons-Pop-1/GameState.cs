@@ -74,7 +74,7 @@ namespace PoppingBaloons
             else
                 end = __st.popBaloon(fst+1, snd+1);//if this turn ends the game, try to update the scoreboard
             if (end)
-                Console.WriteLine("Congratulations!!You popped all the baloons in" + __st.cnt + "moves!");
+                Console.WriteLine("Congratulations!!You popped all the baloons in" + __st.turnCounter + "moves!");
                 updateScoreboard();
                 restart();
         }
@@ -92,7 +92,7 @@ namespace PoppingBaloons
             };
             if (scoreboard.Count < 5)
             {
-                add(__st.cnt);
+                add(__st.turnCounter);
                 return;
             }
             else
@@ -100,9 +100,9 @@ namespace PoppingBaloons
 
 
 
-                if (scoreboard.ElementAt<Tuple<string, int>>(4).Item2 >= __st.cnt)
+                if (scoreboard.ElementAt<Tuple<string, int>>(4).Item2 >= __st.turnCounter)
                 {
-                    add(__st.cnt);
+                    add(__st.turnCounter);
                     scoreboard.RemoveRange(4, 1);//if the new name replaces one of the old ones, remove the old one
                 }
             }

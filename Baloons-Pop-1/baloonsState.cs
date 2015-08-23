@@ -1,33 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace PoppingBaloons
+﻿namespace PoppingBaloons
 {
-    class baloonsState
+    using System;
+    using System.Linq;
+
+    public class baloonsState
     {
-        int[,] poleto;
-        public int cnt;//the turn counter
+        private int[,] playField;
+        public int turnCounter;
+        private Random randomGenerator;
        
         public baloonsState()
         {
-            cnt = 0;
-            poleto = new int[6, 10];
-            Random rnd = new Random();
+            this.turnCounter = 0;
+            this.playField = new int[6, 10];
+            this.randomGenerator = new Random();
+
             for (int i = 0; i < 6; i++)
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    poleto[i, j] = rnd.Next(1, 5);
+                    playField[i, j] = randomGenerator.Next(1, 5);
                 }
             }
             printArray();
         }
-        ~baloonsState()
-        {
 
-        }
         char pr(int a)
         {
             switch (a)
@@ -52,33 +49,33 @@ namespace PoppingBaloons
         public bool popBaloon(int x, int y)
         {
             //changes the game state and returns boolean,indicating wheater the game is over
-            if (poleto[x - 1, y - 1] == 0)
+            if (playField[x - 1, y - 1] == 0)
             {
                 Console.WriteLine("Invalid Move! Can not pop a baloon at that place!!");
                 return false;
             }
             else
             {
-                cnt++;
-                int state = poleto[x - 1, y - 1];
+                turnCounter++;
+                int state = playField[x - 1, y - 1];
                 int top = x - 1;
                 int bottom = x - 1;
                 int left = y - 1;
                 int right = y - 1;
-                while (top > 0 && (poleto[top - 1, y - 1] == state))
+                while (top > 0 && (playField[top - 1, y - 1] == state))
                 {
                     top--;
                 }
 
-                while (bottom < 5 && poleto[bottom + 1, y - 1] == state)
+                while (bottom < 5 && playField[bottom + 1, y - 1] == state)
                 {
                     bottom++;
                 }
-                while (left > 0 && poleto[x - 1, left - 1] == state)
+                while (left > 0 && playField[x - 1, left - 1] == state)
                 {
                     left--;
                 }
-                while (right < 9 && poleto[x - 1, right + 1] == state)
+                while (right < 9 && playField[x - 1, right + 1] == state)
                 {
                     right++;
                 }
@@ -88,14 +85,14 @@ namespace PoppingBaloons
 
                     //first remove the elements on the same row and float the elemnts above down
                     if (x == 1)
-                        poleto[x - 1, i] = 0;
+                        playField[x - 1, i] = 0;
 
                     else
                     {
                         for (int j = x - 1; j > 0; j--)
                         {
-                            poleto[j, i] = poleto[j - 1, i];
-                            poleto[j - 1, i] = 0;
+                            playField[j, i] = playField[j - 1, i];
+                            playField[j - 1, i] = 0;
                         }
                     }
                 }
@@ -112,15 +109,15 @@ namespace PoppingBaloons
                 {   //otherwise fix the problematic column as well
                     for (int i = top; i > 0; --i)
                     {//first float the elements above down and replace them
-                        poleto[i + bottom - top, y - 1] = poleto[i, y - 1];
-                        poleto[i, y - 1] = 0;
+                        playField[i + bottom - top, y - 1] = playField[i, y - 1];
+                        playField[i, y - 1] = 0;
                     }
                     if (bottom - top > top - 1)
                     {   //is there are more baloons to pop in the column than elements above them, need to pop them as well
                         for (int i = top; i <= bottom; i++)
                         {
-                            if (poleto[i, y - 1] == state)
-                                poleto[i, y - 1] = 0;
+                            if (playField[i, y - 1] == state)
+                                playField[i, y - 1] = 0;
                         }
                     }
                 }
@@ -134,7 +131,7 @@ namespace PoppingBaloons
 
         bool kraj()
         {
-            foreach (var s in poleto)
+            foreach (var s in playField)
             {
                 if (s != 0)
                     return false;
@@ -149,7 +146,7 @@ namespace PoppingBaloons
             {
                 Console.Write(i.ToString() + " | ");
                 for (int j = 0; j < 10; j++)
-                    Console.Write(pr(poleto[i, j]) + " ");
+                    Console.Write(pr(playField[i, j]) + " ");
                 Console.WriteLine("| ");
 
 
