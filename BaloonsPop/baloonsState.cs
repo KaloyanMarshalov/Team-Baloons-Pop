@@ -3,13 +3,13 @@
     using System;
     using System.Linq;
 
-    public class baloonsState
+    public class BaloonsState
     {
         private int[,] playField;
         public int turnCounter;
         private Random randomGenerator;
        
-        public baloonsState()
+        public BaloonsState()
         {
             this.turnCounter = 0;
             this.playField = new int[6, 10];
@@ -22,7 +22,7 @@
                     playField[i, j] = randomGenerator.Next(1, 5);
                 }
             }
-            printArray();
+            PrintArray();
         }
 
         char pr(int a)
@@ -46,7 +46,7 @@
 
             }
         }
-        public bool popBaloon(int x, int y)
+        public bool PopBaloon(int x, int y)
         {
             //changes the game state and returns boolean,indicating wheater the game is over
             if (playField[x - 1, y - 1] == 0)
@@ -101,9 +101,9 @@
                 if (top == bottom)
                 {
                     Console.WriteLine();
-                    this.printArray();
+                    this.PrintArray();
                     Console.WriteLine();
-                    return kraj();
+                    return GameHasEnded();
                 }
                 else
                 {   //otherwise fix the problematic column as well
@@ -122,14 +122,14 @@
                     }
                 }
                 Console.WriteLine();
-                this.printArray();
+                this.PrintArray();
                 Console.WriteLine();
-                return kraj();
+                return GameHasEnded();
             }
         }
 
 
-        bool kraj()
+        bool GameHasEnded()
         {
             foreach (var s in playField)
             {
@@ -138,7 +138,7 @@
             }
             return true;
         }
-        public void printArray()
+        public void PrintArray()
         {
             Console.WriteLine("    0 1 2 3 4 5 6 7 8 9");
             Console.WriteLine("    --------------------");
@@ -156,7 +156,4 @@
             Console.WriteLine("Insert row and column or other command");
         }
     }
-
-
 }
-

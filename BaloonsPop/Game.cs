@@ -6,12 +6,12 @@
 
     public class Game
     {
-        private baloonsState state;
+        private BaloonsState state;
         List<Tuple<string, int>> highScores;
 
         public Game()
         {
-            state = new baloonsState();
+            state = new BaloonsState();
             highScores = new List<Tuple<string, int>>();
         }
 
@@ -68,7 +68,7 @@
             if (fst > 5)
                 Console.WriteLine("Indexes too big");
             else
-                end = state.popBaloon(fst+1, snd+1);//if this turn ends the game, try to update the scoreboard
+                end = state.PopBaloon(fst+1, snd+1);//if this turn ends the game, try to update the scoreboard
             if (end)
                 Console.WriteLine("Congratulations!!You popped all the baloons in" + state.turnCounter + "moves!");
                 updateScoreboard();
@@ -106,12 +106,12 @@
                       {
                           return p1.Item2.CompareTo(p2.Item2);
                       });
-            state = new baloonsState();
+            state = new BaloonsState();
         }
 
         private void restart()
         {
-            state = new baloonsState();
+            state = new BaloonsState();
         }
 
     }
