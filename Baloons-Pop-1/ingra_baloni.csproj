@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="baloonsState.cs" />
-    <Compile Include="GameState.cs" />
+    <Compile Include="ConsoleLogger.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>

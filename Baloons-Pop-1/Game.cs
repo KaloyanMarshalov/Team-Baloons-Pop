@@ -4,12 +4,12 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public class GameState
+    public class Game
     {
         private baloonsState state;
         List<Tuple<string, int>> highScores;
 
-        public GameState()
+        public Game()
         {
             state = new baloonsState();
             highScores = new List<Tuple<string, int>>();
