@@ -6,7 +6,7 @@
 
     public class HighScore
     {
-        private const int scoreCount = 5;
+        private const int maxScoreCount = 5;
         private SortedList scoreList;
 
         public HighScore()
@@ -23,9 +23,9 @@
 
             this.scoreList.Add(scoreToAdd.Points, scoreToAdd);
 
-            if (this.scoreList.Count > scoreCount)
+            if (this.scoreList.Count > maxScoreCount)
             {
-                this.scoreList.RemoveAt(scoreCount);
+                this.scoreList.RemoveAt(maxScoreCount);
             }
         }
 
