@@ -37,5 +37,15 @@
 
             Assert.AreEqual(playerName, "Player");
         }
+
+        [TestMethod]
+        public void ExpectToStringToReturnProperResult()
+        {
+            Score score = new Score("Player", 100);
+            string expected = "Player 100"; 
+            string actual = score.ToString();
+
+            Assert.AreEqual(actual, expected);
+        }
     }
 }
