@@ -2,16 +2,16 @@
 {
     using System;
 
-    class Score
+    public class Score
     {
         private const int MinimumPlayerNameLength = 3;
         private string nameOfPlayer;
-        private int score;
+        private int points;
 
-        public Score(string nameOfPlayer, int score)
+        public Score(string nameOfPlayer, int points)
         {
-            this.nameOfPlayer = nameOfPlayer;
-            this.score = score;
+            this.NameOfPlayer = nameOfPlayer;
+            this.Points = points;
         }
 
         public string NameOfPlayer
@@ -31,11 +31,11 @@
             }
         }
 
-        public int Score
+        public int Points
         {
             get
             {
-                return this.score;
+                return this.points;
             }
             set
             {
@@ -44,13 +44,13 @@
 		            throw new ArgumentOutOfRangeException("Score must be zero or more");
                 }
 
-                this.score = value;
+                this.points = value;
             }
         }
 
         public override string ToString()
         {
-            return this.NameOfPlayer + " " + this.Score;
+            return this.NameOfPlayer + " " + this.Points;
         }
     }
 }

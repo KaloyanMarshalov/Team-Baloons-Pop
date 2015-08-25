@@ -46,8 +46,10 @@
     <Compile Include="baloonsState.cs" />
     <Compile Include="ConsoleLogger.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="HighScore.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Score.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
