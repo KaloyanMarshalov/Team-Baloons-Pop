@@ -36,29 +36,29 @@
             return stringBuilder.ToString();
         }
 
-        public void executeCommand(string s)
+        public void executeCommand(string command)
         {
-            if (s == "exit")
+            if (command == "exit")
             {                Console.WriteLine("Thanks for playing!!");      Environment.Exit(0);       }
             else
-                if (s == "restart")
+                if (command == "restart")
                     restart();
 
 
                 else
                 {
-                    if (s.Length == 3)
+                    if (command.Length == 3)
                     {
-                        if (s == "top")
+                        if (command == "top")
                             DisplayScoreboard();
                         else
                         {//check input validation
                             int fst, snd;
-                            bool first = Int32.TryParse(s.Remove(1), out fst);
+                            bool first = Int32.TryParse(command.Remove(1), out fst);
 
 
 
-                            bool second = Int32.TryParse(s.Remove(0, 1), out snd);
+                            bool second = Int32.TryParse(command.Remove(0, 1), out snd);
                             if (first && second)
                                 sendCommand(fst, snd);//sends command to the baloonsState game holder
                         }
