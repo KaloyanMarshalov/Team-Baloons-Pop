@@ -5,29 +5,32 @@
     public class Score
     {
         private const int MinimumPlayerNameLength = 3;
-        private string nameOfPlayer;
+        private const int MaximumPlayerNameLength = 12;
+        private const string NameErrorStringFormat = "Player name must be longer than {0} and shorter than {1} symbols";
+
+        private string playerName;
         private int points;
 
         public Score(string nameOfPlayer, int points)
         {
-            this.NameOfPlayer = nameOfPlayer;
+            this.PlayerName = nameOfPlayer;
             this.Points = points;
         }
 
-        public string NameOfPlayer
+        public string PlayerName
         {
             get
             {
-                return this.nameOfPlayer;
+                return this.playerName;
             }
             set
             {
-                if (value.Length <= MinimumPlayerNameLength)
+                if (value.Length <= MinimumPlayerNameLength || value.Length > MaximumPlayerNameLength)
                 {
-                    throw new ArgumentOutOfRangeException("Player name must be longer than " + (MinimumPlayerNameLength - 1) + " symbols");
+                    throw new ArgumentOutOfRangeException(string.Format(NameErrorStringFormat, MinimumPlayerNameLength, MaximumPlayerNameLength));
                 }
 
-                this.nameOfPlayer = value;
+                this.playerName = value;
             }
         }
 
@@ -50,7 +53,7 @@
 
         public override string ToString()
         {
-            return this.NameOfPlayer + " " + this.Points;
+            return this.PlayerName + " " + this.Points;
         }
     }
 }
