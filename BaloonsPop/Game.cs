@@ -79,9 +79,11 @@
             else
                 end = state.PopBaloon(fst+1, snd+1);//if this turn ends the game, try to update the scoreboard
             if (end)
+            { 
                 Console.WriteLine("Congratulations!!You popped all the baloons in" + state.turnCounter + "moves!");
                 updateScoreboard();
                 restart();
+            }
         }
 
         private void updateScoreboard()

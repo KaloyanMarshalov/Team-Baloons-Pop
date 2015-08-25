@@ -57,25 +57,25 @@
             else
             {
                 turnCounter++;
-                int state = playField[x - 1, y - 1];
+                int currentCell = playField[x - 1, y - 1];
                 int top = x - 1;
                 int bottom = x - 1;
                 int left = y - 1;
                 int right = y - 1;
-                while (top > 0 && (playField[top - 1, y - 1] == state))
+                while (top > 0 && (playField[top - 1, y - 1] == currentCell))
                 {
                     top--;
                 }
 
-                while (bottom < 5 && playField[bottom + 1, y - 1] == state)
+                while (bottom < 5 && playField[bottom + 1, y - 1] == currentCell)
                 {
                     bottom++;
                 }
-                while (left > 0 && playField[x - 1, left - 1] == state)
+                while (left > 0 && playField[x - 1, left - 1] == currentCell)
                 {
                     left--;
                 }
-                while (right < 9 && playField[x - 1, right + 1] == state)
+                while (right < 9 && playField[x - 1, right + 1] == currentCell)
                 {
                     right++;
                 }
@@ -116,7 +116,7 @@
                     {   //is there are more baloons to pop in the column than elements above them, need to pop them as well
                         for (int i = top; i <= bottom; i++)
                         {
-                            if (playField[i, y - 1] == state)
+                            if (playField[i, y - 1] == currentCell)
                                 playField[i, y - 1] = 0;
                         }
                     }
