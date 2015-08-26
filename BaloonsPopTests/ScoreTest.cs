@@ -19,7 +19,7 @@
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void ExpectScoreToThrowWhenInitializedWithLongName()
         {
-            Score score = new Score("Playerwithverylongname", 10);
+            Score score = new Score("Playerwithveryverylongname", 10);
         }
 
         [TestMethod]

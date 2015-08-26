@@ -50,6 +50,7 @@
     <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Score.cs" />
+    <Compile Include="ScoreComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

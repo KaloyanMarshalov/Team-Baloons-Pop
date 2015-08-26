@@ -1,17 +1,19 @@
 ﻿namespace PoppingBaloons
 {
     using System;
-    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
 
     public class HighScore
     {
-        private const int maxScoreCount = 5;
-        private SortedList scoreList;
+        private const int MaxScoreCount = 5;
+        private readonly SortedList<int, Score> scoreList;
+        private readonly IComparer<int> descendingComparer = new ScoreComparer();
 
         public HighScore()
         {
-            this.scoreList = new SortedList();
+            this.scoreList = new SortedList<int, Score>(descendingComparer);
         }
 
         public void AddScore(Score scoreToAdd)
@@ -23,9 +25,9 @@
 
             this.scoreList.Add(scoreToAdd.Points, scoreToAdd);
 
-            if (this.scoreList.Count > maxScoreCount)
+            if (this.scoreList.Count > MaxScoreCount)
             {
-                this.scoreList.RemoveAt(maxScoreCount);
+                this.scoreList.RemoveAt(MaxScoreCount);
             }
         }
 
@@ -40,7 +42,7 @@
 
             stringBuilder.AppendLine("Top performers:");
 
-            foreach (DictionaryEntry score in scoreList)
+            foreach (var score in scoreList)
             {
                 stringBuilder.AppendLine(score.Value.ToString());
             }

@@ -53,6 +53,7 @@
     <Compile Include="GameTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScoreTest.cs" />
+    <Compile Include="HighScoreTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BaloonsPop\BaloonsPop.csproj">

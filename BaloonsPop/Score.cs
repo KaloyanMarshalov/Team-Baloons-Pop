@@ -2,10 +2,10 @@
 {
     using System;
 
-    public class Score
+    public class Score : IComparable
     {
         private const int MinimumPlayerNameLength = 3;
-        private const int MaximumPlayerNameLength = 12;
+        private const int MaximumPlayerNameLength = 25;
         private const string NameErrorStringFormat = "Player name must be longer than {0} and shorter than {1} symbols";
 
         private string playerName;
@@ -15,6 +15,11 @@
         {
             this.PlayerName = nameOfPlayer;
             this.Points = points;
+        }
+
+        public int CompareTo(object obj)
+        {
+            return (((Score)obj).Points).CompareTo(this.Points) * -1;
         }
 
         public string PlayerName
