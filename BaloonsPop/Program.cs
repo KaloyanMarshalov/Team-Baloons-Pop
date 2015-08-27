@@ -17,7 +17,7 @@
 
             while(true)
             {
-                game.executeCommand(Console.ReadLine());
+                game.ParseCommand(Console.ReadLine());
             }
         }
     }

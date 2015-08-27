@@ -26,7 +26,6 @@
             {
                 stringBuilder.AppendLine("Top performers:");
 
-                // TODO: Implement a Score and HighScore(list of Scores) class with overloaded ToString() methods
                 foreach (Tuple<string, int> score in this.highScores)
                 {
                     stringBuilder.AppendLine(score.Item1 + "  " + score.Item2 + " turns ");
@@ -36,39 +35,53 @@
             return stringBuilder.ToString();
         }
 
-        public void executeCommand(string command)
+        public void ParseCommand(string command)
         {
-            if (command == "exit")
-            {                Console.WriteLine("Thanks for playing!!");      Environment.Exit(0);       }
-            else
-                if (command == "restart")
-                    restart();
+            string[] commands = command.Split(' ');
 
+            if (commands.Length == 2)
+            {
+                int row;
+                int col;
 
+                bool validRow = int.TryParse(commands[0], out row);
+                bool validCol = int.TryParse(commands[1], out col);
+
+                if (validRow && validCol)
+                {
+                    sendCommand(row, col);
+                }
                 else
                 {
-                    if (command.Length == 3)
-                    {
-                        if (command == "top")
-                            DisplayScoreboard();
-                        else
-                        {//check input validation
-                            int fst, snd;
-                            bool first = Int32.TryParse(command.Remove(1), out fst);
-
-
-
-                            bool second = Int32.TryParse(command.Remove(0, 1), out snd);
-                            if (first && second)
-                                sendCommand(fst, snd);//sends command to the baloonsState game holder
-                        }
-
-
-
-                    }
-                    else Console.WriteLine("Unknown Command");
+                    Console.WriteLine("Unknown command");
                 }
+            }
+            else if (commands.Length == 1)
+            {
+                string currentCommand = commands[0];
 
+                if (currentCommand == "restart")
+                { 
+                    restart();
+                }
+                else if (currentCommand == "top")
+                {
+                    DisplayScoreboard();
+                }
+                else if (currentCommand == "exit")
+                {
+                    Console.WriteLine("Thanks for playing!!");
+                    Environment.Exit(0); 
+                }
+                else
+                {
+                    Console.WriteLine("Unknown command");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Unknown Command");
+            }
         }
 
         private void sendCommand(int fst, int snd)
