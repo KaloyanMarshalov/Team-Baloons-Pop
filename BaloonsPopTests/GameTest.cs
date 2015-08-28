@@ -9,14 +9,8 @@
     public class GameTests
     {
         [TestMethod]
-        public void TestIfDisplayScoreBoardMethodReturnsProperStringWithEmptyScoreboard()
+        public void TestTheGame()
         {
-            Game testGame = new Game();
-            string expected = "The scoreboard is empty\r\n";
-
-            string actual = testGame.DisplayScoreboard();
-
-            Assert.AreEqual(expected, actual);
         }
     }
 }

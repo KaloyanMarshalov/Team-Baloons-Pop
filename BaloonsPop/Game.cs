@@ -5,15 +5,19 @@
     using System.Linq;
     using System.Text;
 
+    using Interfaces;
+
     public class Game
     {
+        private readonly List<Tuple<string, int>> highScores;
+        private readonly ILogger logger;
         private BaloonsState state;
-        private List<Tuple<string, int>> highScores;
 
-        public Game()
+        public Game(ILogger logger)
         {
             state = new BaloonsState();
             highScores = new List<Tuple<string, int>>();
+            this.logger = logger;
         }
 
         public string DisplayScoreboard()
@@ -49,11 +53,11 @@
 
                 if (validRow && validCol)
                 {
-                    sendCommand(row, col);
+                    SendCommand(row, col);
                 }
                 else
                 {
-                    Console.WriteLine("Unknown command");
+                    logger.Log("Unknown command");
                 }
             }
             else if (commands.Length == 1)
@@ -62,7 +66,7 @@
 
                 if (currentCommand == "restart")
                 { 
-                    restart();
+                    Restart();
                 }
                 else if (currentCommand == "top")
                 {
@@ -70,40 +74,40 @@
                 }
                 else if (currentCommand == "exit")
                 {
-                    Console.WriteLine("Thanks for playing!!");
+                    logger.Log("Thanks for playing!!");
                     Environment.Exit(0); 
                 }
                 else
                 {
-                    Console.WriteLine("Unknown command");
+                    logger.Log("Unknown command");
                 }
             }
             else
             {
-                Console.WriteLine("Unknown Command");
+                logger.Log("Unknown Command");
             }
         }
 
-        private void sendCommand(int fst, int snd)
+        private void SendCommand(int fst, int snd)
         {
             bool end = false;
             if (fst > 5)
-                Console.WriteLine("Indexes too big");
+                logger.Log("Indexes too big");
             else
                 end = state.PopBaloon(fst+1, snd+1);//if this turn ends the game, try to update the scoreboard
             if (end)
-            { 
-                Console.WriteLine("Congratulations!!You popped all the baloons in" + state.turnCounter + "moves!");
-                updateScoreboard();
-                restart();
+            {
+                logger.Log("Congratulations!!You popped all the baloons in" + state.turnCounter + "moves!");
+                UpdateScoreboard();
+                Restart();
             }
         }
 
-        private void updateScoreboard()
+        private void UpdateScoreboard()
         {
             Action<int> add = count =>//function to get the player name and add a tuple to the scoreboard
             {
-                Console.WriteLine("Enter Name:");
+                logger.Log("Enter Name:");
                 string s = Console.ReadLine();
                 Tuple<string, int> a = Tuple.Create<string, int>(s, count);
                 highScores.Add(a);
@@ -117,15 +121,13 @@
             }
             else
             {
-
-
-
                 if (highScores.ElementAt<Tuple<string, int>>(4).Item2 >= state.turnCounter)
                 {
                     add(state.turnCounter);
                     highScores.RemoveRange(4, 1);//if the new name replaces one of the old ones, remove the old one
                 }
             }
+
             highScores.Sort(delegate(Tuple<string, int> p1, Tuple<string, int> p2)//re-sort the list
                       {
                           return p1.Item2.CompareTo(p2.Item2);
@@ -133,11 +135,9 @@
             state = new BaloonsState();
         }
 
-        private void restart()
+        private void Restart()
         {
             state = new BaloonsState();
         }
-
     }
 }
-
