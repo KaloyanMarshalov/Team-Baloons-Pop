@@ -97,7 +97,7 @@
                 end = state.PopBaloon(fst+1, snd+1);//if this turn ends the game, try to update the scoreboard
             if (end)
             {
-                logger.Log("Congratulations!!You popped all the baloons in" + state.turnCounter + "moves!");
+                logger.Log("Congratulations!!You popped all the baloons in" + state.TurnCounter + "moves!");
                 UpdateScoreboard();
                 Restart();
             }
@@ -116,14 +116,14 @@
             };
             if (highScores.Count < 5)
             {
-                add(state.turnCounter);
+                add(state.TurnCounter);
                 return;
             }
             else
             {
-                if (highScores.ElementAt<Tuple<string, int>>(4).Item2 >= state.turnCounter)
+                if (highScores.ElementAt<Tuple<string, int>>(4).Item2 >= state.TurnCounter)
                 {
-                    add(state.turnCounter);
+                    add(state.TurnCounter);
                     highScores.RemoveRange(4, 1);//if the new name replaces one of the old ones, remove the old one
                 }
             }
