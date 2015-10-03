@@ -13,7 +13,7 @@
 
         public HighScore()
         {
-            this.scoreList = new SortedList<int, Score>(descendingComparer);
+            this.scoreList = new SortedList<int, Score>(this.descendingComparer);
         }
 
         public void AddScore(Score scoreToAdd)
@@ -33,7 +33,7 @@
 
         public override string ToString()
         {
-            if (scoreList.Count == 0)
+            if (this.scoreList.Count == 0)
             {
                 return "The scoreboard is empty";
             }
@@ -42,7 +42,7 @@
 
             stringBuilder.AppendLine("Top performers:");
 
-            foreach (var score in scoreList)
+            foreach (var score in this.scoreList)
             {
                 stringBuilder.AppendLine(score.Value.ToString());
             }

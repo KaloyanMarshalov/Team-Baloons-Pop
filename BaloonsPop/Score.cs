@@ -17,17 +17,13 @@
             this.Points = points;
         }
 
-        public int CompareTo(object obj)
-        {
-            return (((Score)obj).Points).CompareTo(this.Points) * -1;
-        }
-
         public string PlayerName
         {
             get
             {
                 return this.playerName;
             }
+
             set
             {
                 if (value.Length <= MinimumPlayerNameLength || value.Length > MaximumPlayerNameLength)
@@ -45,15 +41,21 @@
             {
                 return this.points;
             }
+
             set
             {
                 if (value < 0)
                 {
-		            throw new ArgumentOutOfRangeException("Score must be zero or more");
+                    throw new ArgumentOutOfRangeException("Score must be zero or more");
                 }
 
                 this.points = value;
             }
+        }
+
+        public int CompareTo(object obj)
+        {
+            return ((Score)obj).Points.CompareTo(this.Points) * -1;
         }
 
         public override string ToString()

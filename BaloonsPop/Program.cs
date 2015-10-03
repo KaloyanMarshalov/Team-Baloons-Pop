@@ -4,9 +4,9 @@
     using System.Linq;
     using PoppingBaloons.Interfaces;
 
-    class Program
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             ILogger logger = ConsoleLogger.LoggerInstance;
 
@@ -15,7 +15,7 @@
 
             Game game = new Game(logger);
 
-            while(true)
+            while (true)
             {
                 game.ParseCommand(Console.ReadLine());
             }

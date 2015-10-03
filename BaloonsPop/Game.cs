@@ -15,8 +15,8 @@
 
         public Game(ILogger logger)
         {
-            state = new BaloonsState();
-            highScores = new List<Tuple<string, int>>();
+            this.state = new BaloonsState();
+            this.highScores = new List<Tuple<string, int>>();
             this.logger = logger;
         }
 
@@ -24,8 +24,10 @@
         {
             StringBuilder stringBuilder = new StringBuilder();
 
-            if (highScores.Count == 0)
+            if (this.highScores.Count == 0)
+            {
                 stringBuilder.AppendLine("The scoreboard is empty");
+            }
             else
             {
                 stringBuilder.AppendLine("Top performers:");
@@ -53,11 +55,11 @@
 
                 if (validRow && validCol)
                 {
-                    SendCommand(row, col);
+                    this.SendCommand(row, col);
                 }
                 else
                 {
-                    logger.Log("Unknown command");
+                    this.logger.Log("Unknown command");
                 }
             }
             else if (commands.Length == 1)
@@ -65,26 +67,26 @@
                 string currentCommand = commands[0];
 
                 if (currentCommand == "restart")
-                { 
-                    Restart();
+                {
+                    this.Restart();
                 }
                 else if (currentCommand == "top")
                 {
-                    DisplayScoreboard();
+                    this.DisplayScoreboard();
                 }
                 else if (currentCommand == "exit")
                 {
-                    logger.Log("Thanks for playing!!");
+                    this.logger.Log("Thanks for playing!!");
                     Environment.Exit(0); 
                 }
                 else
                 {
-                    logger.Log("Unknown command");
+                    this.logger.Log("Unknown command");
                 }
             }
             else
             {
-                logger.Log("Unknown Command");
+                this.logger.Log("Unknown Command");
             }
         }
 
@@ -92,52 +94,53 @@
         {
             bool end = false;
             if (fst > 5)
-                logger.Log("Indexes too big");
+            {
+                this.logger.Log("Indexes too big");
+            }
             else
-                end = state.PopBaloon(fst+1, snd+1);//if this turn ends the game, try to update the scoreboard
+            {
+                ////if this turn ends the game, try to update the scoreboard
+                end = this.state.PopBaloon(fst + 1, snd + 1);
+            } 
+
             if (end)
             {
-                logger.Log("Congratulations!!You popped all the baloons in" + state.TurnCounter + "moves!");
-                UpdateScoreboard();
-                Restart();
+                this.logger.Log("Congratulations!! You popped all the baloons in" + this.state.TurnCounter + "moves!");
+                this.UpdateScoreboard();
+                this.Restart();
             }
         }
 
         private void UpdateScoreboard()
         {
-            Action<int> add = count =>//function to get the player name and add a tuple to the scoreboard
+            Action<int> add = count => ////function to get the player name and add a tuple to the scoreboard
             {
                 logger.Log("Enter Name:");
                 string s = Console.ReadLine();
                 Tuple<string, int> a = Tuple.Create<string, int>(s, count);
                 highScores.Add(a);
-
-
             };
-            if (highScores.Count < 5)
+            if (this.highScores.Count < 5)
             {
-                add(state.TurnCounter);
+                add(this.state.TurnCounter);
                 return;
             }
             else
             {
-                if (highScores.ElementAt<Tuple<string, int>>(4).Item2 >= state.TurnCounter)
+                if (this.highScores.ElementAt<Tuple<string, int>>(4).Item2 >= this.state.TurnCounter)
                 {
-                    add(state.TurnCounter);
-                    highScores.RemoveRange(4, 1);//if the new name replaces one of the old ones, remove the old one
+                    add(this.state.TurnCounter);
+                    this.highScores.RemoveRange(4, 1); ////if the new name replaces one of the old ones, remove the old one
                 }
             }
 
-            highScores.Sort(delegate(Tuple<string, int> p1, Tuple<string, int> p2)//re-sort the list
-                      {
-                          return p1.Item2.CompareTo(p2.Item2);
-                      });
-            state = new BaloonsState();
+            this.highScores.Sort((p1, p2) => p1.Item2.CompareTo(p2.Item2));
+            this.state = new BaloonsState();
         }
 
         private void Restart()
         {
-            state = new BaloonsState();
+            this.state = new BaloonsState();
         }
     }
 }
