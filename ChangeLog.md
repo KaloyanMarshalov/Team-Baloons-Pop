@@ -41,6 +41,8 @@
 * Added a ILogger interface
 * Added threadsafe ConsoleLogger class implementing the ILogger interface
 * Introduced variables boardWidth and boardHeight in BaloonsState.cs
+* Introduced variables minBaloon and maxBallon in BaloonState.cs
+* Created a method SwitchConsoleColor
 
 ## Other refactorings
 

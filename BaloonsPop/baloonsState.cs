@@ -10,6 +10,8 @@
         private Random randomGenerator;
         private int boardWidth = 6;
         private int boardHeight = 10;
+        private int minBaloon = 1;
+        private int maxBaloon = 4;
        
         public BaloonsState()
         {
@@ -30,7 +32,7 @@
 
         char GetBaloonChar(int baloonNum)
         {
-            if (baloonNum >= 1 && baloonNum <= 4)
+            if (baloonNum >= minBaloon && baloonNum <= maxBaloon)
             {
                 return baloonNum.ToString()[0];
             }
@@ -150,14 +152,38 @@
                 Console.Write(i.ToString() + " | ");
                 for (int j = 0; j < boardHeight; j++)
                 {
-                    char currentChar = GetBaloonChar(playField[i, j]);
+                    int baloonNumber = playField[i, j];
+                    SwitchConsoleColor(baloonNumber);
+                    char currentChar = GetBaloonChar(baloonNumber);
                     Console.Write(currentChar + " ");
                 }
+                Console.ResetColor();
                 Console.WriteLine("| ");
             }
 
             Console.WriteLine("    --------------------");
             Console.WriteLine("Insert row and column or other command");
+        }
+        private void SwitchConsoleColor(int baloonNumber)
+        {
+            switch (baloonNumber)
+            {
+                case 1:
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    break;
+                case 2:
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    break;
+                case 3:
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    break;
+                case 4:
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    break;
+                default:
+                    Console.ResetColor();
+                    break;
+            }
         }
     }
 }
