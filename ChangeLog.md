@@ -28,6 +28,7 @@
   * method popBaloon => PopBaloon
   * method kraj => GameHasEnded
   * method printArray => PrintArray  
+  * method pr => GetBaloonChar
 
 ## Structure refactorings
 

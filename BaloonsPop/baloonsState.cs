@@ -28,24 +28,15 @@
             PrintArray();
         }
 
-        char pr(int a)
+        char GetBaloonChar(int baloonNum)
         {
-            switch (a)
+            if (baloonNum >= 1 && baloonNum <= 4)
             {
-                case 1:
-                    return '1';
-
-                case 2:
-                    return '2';
-
-                case 3:
-                    return '3';
-
-                case 4:
-                    return '4';
-
-                default:
-                    return '-';
+                return baloonNum.ToString()[0];
+            }
+            else
+            {
+                return '-';
             }
         }
 
@@ -158,7 +149,10 @@
             {
                 Console.Write(i.ToString() + " | ");
                 for (int j = 0; j < boardHeight; j++)
-                    Console.Write(pr(playField[i, j]) + " ");
+                {
+                    char currentChar = GetBaloonChar(playField[i, j]);
+                    Console.Write(currentChar + " ");
+                }
                 Console.WriteLine("| ");
             }
 
