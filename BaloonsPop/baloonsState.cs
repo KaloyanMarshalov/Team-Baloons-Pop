@@ -8,16 +8,18 @@
         private int[,] playField;
         public int TurnCounter;
         private Random randomGenerator;
+        private int boardWidth = 6;
+        private int boardHeight = 10;
        
         public BaloonsState()
         {
             this.TurnCounter = 0;
-            this.playField = new int[6, 10];
+            this.playField = new int[boardWidth, boardHeight];
             this.randomGenerator = new Random();
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < boardWidth; i++)
             {
-                for (int j = 0; j < 10; j++)
+                for (int j = 0; j < boardHeight; j++)
                 {
                     playField[i, j] = randomGenerator.Next(1, 5);
                 }
@@ -152,10 +154,10 @@
         {
             Console.WriteLine("    0 1 2 3 4 5 6 7 8 9");
             Console.WriteLine("    --------------------");
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < boardWidth; i++)
             {
                 Console.Write(i.ToString() + " | ");
-                for (int j = 0; j < 10; j++)
+                for (int j = 0; j < boardHeight; j++)
                     Console.Write(pr(playField[i, j]) + " ");
                 Console.WriteLine("| ");
             }

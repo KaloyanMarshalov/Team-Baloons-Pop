@@ -39,6 +39,7 @@
 * Added a HighScore class to hold highest scores
 * Added a ILogger interface
 * Added threadsafe ConsoleLogger class implementing the ILogger interface
+* Introduced variables boardWidth and boardHeight in BaloonsState.cs
 
 ## Other refactorings
 
