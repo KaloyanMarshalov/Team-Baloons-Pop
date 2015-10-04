@@ -6,22 +6,23 @@
     public class BaloonsState
     {
         public int TurnCounter;
-        private int[,] playField;
+        private const int BoardWidth = 6;
+        private const int BoardHeight = 10;
+        private const int MinBaloon = 1;
+        private const int MaxBaloon = 4;
+
+        private readonly int[,] playField;
         private Random randomGenerator;
-        private int boardWidth = 6;
-        private int boardHeight = 10;
-        private int minBaloon = 1;
-        private int maxBaloon = 4;
-       
+      
         public BaloonsState()
         {
             this.TurnCounter = 0;
-            this.playField = new int[this.boardWidth, this.boardHeight];
+            this.playField = new int[BoardWidth, BoardHeight];
             this.randomGenerator = new Random();
 
-            for (int i = 0; i < this.boardWidth; i++)
+            for (int i = 0; i < BoardWidth; i++)
             {
-                for (int j = 0; j < this.boardHeight; j++)
+                for (int j = 0; j < BoardHeight; j++)
                 {
                     this.playField[i, j] = this.randomGenerator.Next(1, 5);
                 }
@@ -32,7 +33,7 @@
 
         public char GetBaloonChar(int baloonNum)
         {
-            if (baloonNum >= this.minBaloon && baloonNum <= this.maxBaloon)
+            if (baloonNum >= MinBaloon && baloonNum <= MaxBaloon)
             {
                 return baloonNum.ToString()[0];
             }
@@ -147,10 +148,10 @@
         {
             Console.WriteLine("    0 1 2 3 4 5 6 7 8 9");
             Console.WriteLine("    --------------------");
-            for (int i = 0; i < this.boardWidth; i++)
+            for (int i = 0; i < BoardWidth; i++)
             {
                 Console.Write(i.ToString() + " | ");
-                for (int j = 0; j < this.boardHeight; j++)
+                for (int j = 0; j < BoardHeight; j++)
                 {
                     int baloonNumber = this.playField[i, j];
                     this.SwitchConsoleColor(baloonNumber);
