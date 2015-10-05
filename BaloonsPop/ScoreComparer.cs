@@ -1,6 +1,5 @@
 ﻿namespace PoppingBaloons
 {
-    using System;
     using System.Collections.Generic;
 
     internal class ScoreComparer : IComparer<int>

@@ -5,8 +5,8 @@
 
     public sealed class ConsoleLogger : ILogger
     {
+        private static readonly object SyncLock = new object();
         private static volatile ConsoleLogger loggerInstance;
-        private static object syncLock = new object();
 
         private ConsoleLogger()
         {
@@ -18,7 +18,7 @@
             {
                 if (loggerInstance == null)
                 {
-                    lock (syncLock)
+                    lock (SyncLock)
                     {
                         if (loggerInstance == null)
                         {
