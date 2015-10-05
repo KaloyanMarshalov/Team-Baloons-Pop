@@ -1,10 +1,53 @@
-﻿namespace PoppingBaloons
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="StringExtensions.cs" company="Team-Baloon-Pop">
+//   Team-Baloon-Pop
+// </copyright>
+// <summary>
+//   A class that watches for a change in state of the baloons.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+
+namespace PoppingBaloons
 {
     using System;
     using System.Linq;
+    using System.Reflection;
+
+    /// <summary>
+    /// Static class providing various string extension methods: 
+    /// <list type="bullet">
+    /// <item> 
+    /// <description><see cref="TurnCounter"/>,</description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="BaloonsState()"/>,</description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="GetBaloonChar"/>,</description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="PopBaloon"/>,</description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="GameHasEnded"/>,</description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="SwitchConsoleColor"/>,</description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="PrintArray"/></description> 
+    /// </item>
+    /// </list> 
+    /// </summary>
 
     public class BaloonsState
     {
+        /// <summary>
+        /// An integer variable that counts how many times a baloon is popped. When the game
+        /// begins it has an initial value 0. After that before the game is over it grows by one
+        /// for every baloon pop.
+        /// </summary>
         public int TurnCounter;
         private const int BoardWidth = 6;
         private const int BoardHeight = 10;
@@ -13,7 +56,11 @@
 
         private readonly int[,] playField;
         private Random randomGenerator;
-      
+
+        /// <summary>
+        /// This method randomly generates the position of the player on the game board
+        /// and uses <see cref="PrintArray"/> method to print the board on the console.
+        /// </summary>
         public BaloonsState()
         {
             this.TurnCounter = 0;
@@ -31,6 +78,11 @@
             this.PrintArray();
         }
 
+        /// <summary>
+        /// A method that checks if the number of baloons is in a given range.
+        /// </summary>
+        /// <param name="baloonNum">The integer the method is called upon.</param>
+        /// <returns>The method returns a char or a '-'.</returns>
         public char GetBaloonChar(int baloonNum)
         {
             if (baloonNum >= MinBaloon && baloonNum <= MaxBaloon)
@@ -43,6 +95,13 @@
             }
         }
 
+        /// <summary>
+        /// This method accepts two integer parameters and uses them to find where on the field is 
+        /// the player. Depending on that tha game contimues or is over.
+        /// </summary>
+        /// <param name="x">The integer the method is called upon.</param>
+        /// <param name="y">The integer the method is called upon.</param>
+        /// <returns>The method returns a boolean, which indicates wheather the game is over.</returns>
         public bool PopBaloon(int x, int y)
         {
             ////changes the game state and returns boolean,indicating wheater the game is over
@@ -131,6 +190,11 @@
             }
         }
 
+        /// <summary>
+        /// This method accespts no parameters. It checks if the game has ended by searching for
+        /// entries in the playfield coordinates that are equal to 0.
+        /// </summary>
+        /// <returns>The method returns a boolean, which indicates wheather the game is over.</returns>
         public bool GameHasEnded()
         {
             foreach (var s in this.playField)
@@ -144,6 +208,9 @@
             return true;
         }
 
+        /// <summary>
+        /// This method is used for printing the game board on the console.
+        /// </summary>
         public void PrintArray()
         {
             Console.WriteLine("    0 1 2 3 4 5 6 7 8 9");
@@ -167,6 +234,11 @@
             Console.WriteLine("Insert row and column or other command");
         }
 
+        /// <summary>
+        /// This method accepts an integer parameter and depending on that it changes the
+        /// color with which the baloon number will be printed on the console.
+        /// </summary>
+        /// <param name="baloonNumber">The integer the method is called upon.</param>
         private void SwitchConsoleColor(int baloonNumber)
         {
             switch (baloonNumber)
