@@ -29,6 +29,9 @@
   * method kraj => GameHasEnded
   * method printArray => PrintArray  
   * method pr => GetBaloonChar
+  
+* file Program.cs => MainMenu.cs
+ * Added Logo using strings
 
 ## Structure refactorings
 
