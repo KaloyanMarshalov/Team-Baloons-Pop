@@ -1,13 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Game.cs" company="Team-Baloon-Pop">
-//   Team-Baloon-Pop
-// </copyright>
-// <summary>
-//   A class that watches for a change in state of the baloons.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace PoppingBaloons
+﻿namespace PoppingBaloons
 {
     using System;
     using System.Collections.Generic;
@@ -16,37 +7,12 @@ namespace PoppingBaloons
 
     using Interfaces;
 
-    /// <summary>
-    /// A class that displays and updates the scores on the console:
-    /// <list type="bullet">
-    /// <item> 
-    /// <description><see cref="DisplayScoreboard"/>,</description> 
-    /// </item>
-    /// <item> 
-    /// <description><see cref="ParseCommand"/>,</description> 
-    /// </item>
-    /// <item> 
-    /// <description><see cref="SendCommand"/>,</description> 
-    /// </item>
-    /// <item> 
-    /// <description><see cref="UpdateScoreboard"/>,</description> 
-    /// </item>
-    /// <item> 
-    /// <description><see cref="Restart"/>,</description> 
-    /// </item>
-    /// </list> 
-    /// </summary>
-
     public class Game
     {
         private readonly List<Tuple<string, int>> highScores;
         private readonly ILogger logger;
         private BaloonsState state;
 
-        /// <summary>
-        /// A constructor used for instantiating the class.
-        /// </summary>
-        /// <param name="logger">The interface the constructor demands on instatiation.</param>
         public Game(ILogger logger)
         {
             this.state = new BaloonsState();
@@ -54,10 +20,6 @@ namespace PoppingBaloons
             this.logger = logger;
         }
 
-        /// <summary>
-        /// A method that is used to display the score in the form of text.
-        /// </summary>
-        /// <returns>The method returns a string.</returns>
         public string DisplayScoreboard()
         {
             StringBuilder stringBuilder = new StringBuilder();
@@ -79,12 +41,6 @@ namespace PoppingBaloons
             return stringBuilder.ToString();
         }
 
-        /// <summary>
-        /// A method that accepts a string. The method first checks for the validity of the string
-        /// command. After that depending on the string's length, the method invokes other
-        /// methods or prints a message on the console.
-        /// </summary>
-        /// /// <param name="command">The string the method is called upon.</param>
         public void ParseCommand(string command)
         {
             string[] commands = command.Split(' ');
@@ -110,22 +66,22 @@ namespace PoppingBaloons
             {
                 string currentCommand = commands[0];
 
-                if (currentCommand == "restart")
+                switch (currentCommand)
                 {
-                    this.Restart();
-                }
-                else if (currentCommand == "top")
-                {
-                    this.DisplayScoreboard();
-                }
-                else if (currentCommand == "exit")
-                {
-                    this.logger.Log("Thanks for playing!!!");
-                    Environment.Exit(0); 
-                }
-                else
-                {
-                    this.logger.Log("Unknown command");
+                    case "restart":
+                        Console.Clear();
+                        this.Restart();
+                        break;
+                    case "top":
+                        this.DisplayScoreboard();
+                        break;
+                    case "exit":
+                        this.logger.Log("Thanks for playing!!!");
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        this.logger.Log("Unknown command");
+                        break;
                 }
             }
             else
@@ -134,13 +90,6 @@ namespace PoppingBaloons
             }
         }
 
-        /// <summary>
-        /// Depending on the passed parameters (row and column), this method checks if they
-        /// are in the range of the game board, if baloons are popped and if true game ends and 
-        /// result is updated.
-        /// </summary>
-        /// <param name="row">The integer the method is called upon.</param>
-        /// <param name="column">The integer the method is called upon.</param>
         private void SendCommand(int row, int column)
         {
             bool endOfTheGame = false;
@@ -154,7 +103,7 @@ namespace PoppingBaloons
             {
                 ////if this turn ends the game, try to update the scoreboard
                 endOfTheGame = this.state.PopBaloon(row + 1, column + 1);
-            } 
+            }
 
             if (endOfTheGame)
             {
@@ -164,10 +113,6 @@ namespace PoppingBaloons
             }
         }
 
-        /// <summary>
-        /// A method used to update the score. It checks if a new player name is inserted and
-        /// replaces the old one.
-        /// </summary>
         private void UpdateScoreboard()
         {
             Action<int> add = count => ////function to get the player name and add a tuple to the scoreboard
@@ -198,9 +143,6 @@ namespace PoppingBaloons
             this.state = new BaloonsState();
         }
 
-        /// <summary>
-        /// A method used for making a new instance of the <see cref="BaloonsState()"/> method.
-        /// </summary>
         private void Restart()
         {
             this.state = new BaloonsState();

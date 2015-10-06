@@ -39,6 +39,7 @@
   
 * file Program.cs => MainMenu.cs
  * Added Logo using strings
+ * Added method StartMenu
 
 ## Structure refactorings
 
