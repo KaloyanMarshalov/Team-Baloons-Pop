@@ -1,7 +1,25 @@
-﻿namespace PoppingBaloons
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="StringExtensions.cs" company="Team-Baloon-Pop">
+//   Team-Baloon-Pop
+// </copyright>
+// <summary>
+//   A class that watches for a change in state of the baloons.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace PoppingBaloons
 {
     using System;
     using PoppingBaloons.Interfaces;
+
+    /// <summary>
+    /// Sealed class used for logging various messages on the console:
+    /// <list type="bullet">
+    /// <item> 
+    /// <description><see cref="Log"/></description> 
+    /// </item>
+    /// </list> 
+    /// </summary>
 
     public sealed class ConsoleLogger : ILogger
     {
@@ -12,6 +30,11 @@
         {
         }
 
+        /// <summary>
+        /// A static method used for checking if an instance of this class is already
+        /// available. Implementation of the Singleton Pattern.
+        /// </summary>
+        /// <returns>The method returns a new instance if none has been instantiated.</returns>
         public static ConsoleLogger LoggerInstance
         {
             get
@@ -31,6 +54,10 @@
             }
         }
 
+        /// <summary>
+        /// A method that writes a message on the console.
+        /// </summary>
+        /// <param name="message">The string the method is called upon.</param>
         public void Log(string message)
         {
             Console.WriteLine(message);
