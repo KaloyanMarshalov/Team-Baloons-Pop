@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="StringExtensions.cs" company="Team-Baloon-Pop">
+// <copyright file="ConsoleLogger.cs" company="Team-Baloon-Pop">
 //   Team-Baloon-Pop
 // </copyright>
 // <summary>
