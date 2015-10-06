@@ -15,7 +15,8 @@ namespace PoppingBaloons
     using System.Reflection;
 
     /// <summary>
-    /// Static class providing various string extension methods: 
+    /// A class that watches for the game development, drawing the game board
+    /// on the console and stopping the game using the following methods: 
     /// <list type="bullet">
     /// <item> 
     /// <description><see cref="TurnCounter"/>,</description> 
