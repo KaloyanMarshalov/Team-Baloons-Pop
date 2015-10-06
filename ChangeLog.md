@@ -15,6 +15,13 @@
   * method sendCommand => SendCommand
   * method updateScoreboard => UpdateScoreboard
   * method restart => Restart
+  * method SendCommand input params "fst" and "scd" => int row; int column
+	* Create variable the magic number "5" named  "maxRows"
+	* bool end => bool endOfTheGame
+  * in method UpdateScoreboard	
+	* variable string s => string playerName
+	* a => scoresOfPlayer
+	* magic number 5 => variable int maxPlayersInHighScores
 
 * file GameState.cs
   * variable cnt => turnCounter

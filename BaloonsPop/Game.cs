@@ -76,7 +76,7 @@
                 }
                 else if (currentCommand == "exit")
                 {
-                    this.logger.Log("Thanks for playing!!");
+                    this.logger.Log("Thanks for playing!!!");
                     Environment.Exit(0); 
                 }
                 else
@@ -90,22 +90,24 @@
             }
         }
 
-        private void SendCommand(int fst, int snd)
+        private void SendCommand(int row, int column)
         {
-            bool end = false;
-            if (fst > 5)
+            bool endOfTheGame = false;
+            int maxRows = 5;
+
+            if (row > maxRows)
             {
                 this.logger.Log("Indexes too big");
             }
             else
             {
                 ////if this turn ends the game, try to update the scoreboard
-                end = this.state.PopBaloon(fst + 1, snd + 1);
+                endOfTheGame = this.state.PopBaloon(row + 1, column + 1);
             } 
 
-            if (end)
+            if (endOfTheGame)
             {
-                this.logger.Log("Congratulations!! You popped all the baloons in" + this.state.TurnCounter + "moves!");
+                this.logger.Log("Congratulations!! You popped all the baloons in " + this.state.TurnCounter + " moves!");
                 this.UpdateScoreboard();
                 this.Restart();
             }
@@ -115,12 +117,15 @@
         {
             Action<int> add = count => ////function to get the player name and add a tuple to the scoreboard
             {
-                logger.Log("Enter Name:");
-                string s = Console.ReadLine();
-                Tuple<string, int> a = Tuple.Create<string, int>(s, count);
-                highScores.Add(a);
+                logger.Log("Enter Name: ");
+                string playerName = Console.ReadLine();
+                Tuple<string, int> scoresOfPlayer = Tuple.Create<string, int>(playerName, count);
+                highScores.Add(scoresOfPlayer);
             };
-            if (this.highScores.Count < 5)
+
+            int maxPlayersInHighScores = 5;
+
+            if (this.highScores.Count < maxPlayersInHighScores)
             {
                 add(this.state.TurnCounter);
                 return;
