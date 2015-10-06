@@ -158,10 +158,7 @@ namespace PoppingBaloons
                 ////if that's enough,just stop
                 if (top == bottom)
                 {
-                    Console.WriteLine();
-                    this.PrintArray();
-                    Console.WriteLine();
-                    return this.GameHasEnded();
+                    return this.EndGame();
                 }
                 else
                 {   ////otherwise fix the problematic column as well
@@ -183,10 +180,7 @@ namespace PoppingBaloons
                     }
                 }
 
-                Console.WriteLine();
-                this.PrintArray();
-                Console.WriteLine();
-                return this.GameHasEnded();
+                return this.EndGame();
             }
         }
 
@@ -260,5 +254,11 @@ namespace PoppingBaloons
                     break;
             }
         }
-    }
+        private bool EndGame() {
+            Console.WriteLine();
+            this.PrintArray();
+            Console.WriteLine();
+            return this.GameHasEnded();
+        }
+    } 
 }
