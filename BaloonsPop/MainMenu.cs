@@ -25,7 +25,6 @@ namespace PoppingBaloons
     /// </item>
     /// </list> 
     /// </summary>
-
     public class MainMenu
     {
         /// <summary>
