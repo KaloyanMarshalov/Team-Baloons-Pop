@@ -15,7 +15,7 @@ namespace PoppingBaloons
     using System.Text;
 
     /// <summary>
-    /// Sealed class used for logging various messages on the console:
+    /// A class that updates and prints the highscore:
     /// <list type="bullet">
     /// <item> 
     /// <description><see cref="HighScore()"/></description> 

@@ -15,7 +15,7 @@ namespace PoppingBaloons
     using PoppingBaloons.Interfaces;
 
     /// <summary>
-    /// Sealed class used for logging various messages on the console:
+    /// The main class used to execute the whole code:
     /// <list type="bullet">
     /// <item> 
     /// <description><see cref="Main"/></description> 
@@ -25,7 +25,7 @@ namespace PoppingBaloons
     /// </item>
     /// </list> 
     /// </summary>
-    
+
     public class MainMenu
     {
         /// <summary>

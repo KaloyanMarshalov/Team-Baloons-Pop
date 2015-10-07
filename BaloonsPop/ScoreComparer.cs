@@ -12,14 +12,14 @@ namespace PoppingBaloons
     using System.Collections.Generic;
 
     /// <summary>
-    /// Sealed class used for logging various messages on the console:
+    /// An internal class used for comparison of two integers:
     /// <list type="bullet">
     /// <item> 
     /// <description><see cref="Compare"/></description> 
     /// </item>
     /// </list> 
     /// </summary>
-   
+
     internal class ScoreComparer : IComparer<int>
     {
         /// <summary>

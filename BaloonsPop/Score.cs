@@ -12,7 +12,7 @@ namespace PoppingBaloons
     using System;
 
     /// <summary>
-    /// Sealed class used for logging various messages on the console:
+    /// A class that updates the score of each player:
     /// <list type="bullet">
     /// <item> 
     /// <description><see cref="CompareTo"/></description> 
