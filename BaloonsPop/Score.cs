@@ -1,7 +1,27 @@
-﻿namespace PoppingBaloons
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Score.cs" company="Team-Baloon-Pop">
+//   Team-Baloon-Pop
+// </copyright>
+// <summary>
+//   A class that updates the score of each player.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace PoppingBaloons
 {
     using System;
 
+    /// <summary>
+    /// Sealed class used for logging various messages on the console:
+    /// <list type="bullet">
+    /// <item> 
+    /// <description><see cref="CompareTo"/></description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="ToString"/></description> 
+    /// </item>
+    /// </list> 
+    /// </summary>
     public class Score : IComparable
     {
         private const int MinimumPlayerNameLength = 3;
@@ -11,12 +31,20 @@
         private string playerName;
         private int points;
 
+        /// <summary>
+        /// A constructor used to instantiate the class.
+        /// </summary>
+        /// <param name="nameOfPlayer">The string the contructor uses.</param>
+        /// <param name="points">The integer the contructor uses.</param>
         public Score(string nameOfPlayer, int points)
         {
             this.PlayerName = nameOfPlayer;
             this.Points = points;
         }
 
+        /// <summary>
+        /// Gets or sets the player name.
+        /// </summary>
         public string PlayerName
         {
             get
@@ -35,6 +63,9 @@
             }
         }
 
+        /// <summary>
+        /// Gets or sets the points.
+        /// </summary>
         public int Points
         {
             get
@@ -53,11 +84,19 @@
             }
         }
 
+        /// <summary>
+        /// A method that compares the points.
+        /// </summary>
+        /// <param name="obj">The object the method is called upon.</param>
+        /// <returns>The compared result multiplied by -1.</returns>
         public int CompareTo(object obj)
         {
             return ((Score)obj).Points.CompareTo(this.Points) * -1;
         }
 
+        /// <summary>
+        /// A method used to concatenate the player name and his/her points.
+        /// </summary>
         public override string ToString()
         {
             return this.PlayerName + " " + this.Points;

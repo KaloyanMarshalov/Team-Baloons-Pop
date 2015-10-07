@@ -3,7 +3,7 @@
 //   Team-Baloon-Pop
 // </copyright>
 // <summary>
-//   A class that watches for a change in state of the baloons.
+//   A class that updates and prints the highscore.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
