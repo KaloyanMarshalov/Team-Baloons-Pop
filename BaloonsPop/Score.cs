@@ -45,6 +45,8 @@ namespace PoppingBaloons
         /// <summary>
         /// Gets or sets the player name.
         /// </summary>
+        /// <exception cref="System.ArgumentOutOfRangeException">Throws if the name is not in
+        /// the desired range.</exception>
         public string PlayerName
         {
             get
@@ -66,6 +68,7 @@ namespace PoppingBaloons
         /// <summary>
         /// Gets or sets the points.
         /// </summary>
+        /// <exception cref="System.ArgumentOutOfRangeException">Throws if points are lower than 0.</exception>
         public int Points
         {
             get
