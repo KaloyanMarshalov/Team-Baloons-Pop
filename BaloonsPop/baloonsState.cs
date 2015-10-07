@@ -7,7 +7,6 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-
 namespace PoppingBaloons
 {
     using System;
@@ -41,7 +40,6 @@ namespace PoppingBaloons
     /// </item>
     /// </list> 
     /// </summary>
-
     public class BaloonsState
     {
         /// <summary>
@@ -255,7 +253,9 @@ namespace PoppingBaloons
                     break;
             }
         }
-        private bool EndGame() {
+
+        private bool EndGame() 
+        {
             Console.WriteLine();
             this.PrintArray();
             Console.WriteLine();

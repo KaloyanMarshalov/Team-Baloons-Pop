@@ -20,7 +20,6 @@ namespace PoppingBaloons
     /// </item>
     /// </list> 
     /// </summary>
-
     public sealed class ConsoleLogger : ILogger
     {
         private static readonly object SyncLock = new object();

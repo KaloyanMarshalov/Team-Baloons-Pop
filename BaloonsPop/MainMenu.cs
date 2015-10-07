@@ -20,11 +20,11 @@
             logger.Log("|   / | |_| || |   | |   | | | || | | || |\\ \\| |   | |_| || | | || |_| || |___ ");
             logger.Log("| _ \\ |  _  || |__ | |__ | |_| || |_| || |  \\  |   |  _ _|| |_| ||  _ _| ___  |");
             logger.Log("|____||_| |_||____||____||_____||_____||_|   |_|   |_|    |_____||_|    |_____|  ");
-            logger.Log("");
+            logger.Log(string.Empty);
             logger.Log("                        Welcome to “Balloons Pops” game :)");
-            logger.Log("");
+            logger.Log(string.Empty);
             logger.Log("                         Please try to pop the balloons!");
-            logger.Log("");
+            logger.Log(string.Empty);
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("___________________________________________________________________________________");
             Console.WriteLine();
@@ -44,7 +44,7 @@
                 logger.Log("* Use 'top' to view the top scoreboard!");
                 logger.Log("* Use 'restart' to start a new game!");
                 logger.Log("* Use 'exit' to quit the game!");
-                logger.Log("");
+                logger.Log(string.Empty);
 
                 Game game = new Game(logger);
 
@@ -64,11 +64,11 @@
                     logger.Log("|   / | |_| || |   | |   | | | || | | || |\\ \\| |   | |_| || | | || |_| || |___ ");
                     logger.Log("| _ \\ |  _  || |__ | |__ | |_| || |_| || |  \\  |   |  _ _|| |_| ||  _ _| ___  |");
                     logger.Log("|____||_| |_||____||____||_____||_____||_|   |_|   |_|    |_____||_|    |_____|  ");
-                    logger.Log("");
+                    logger.Log(string.Empty);
                     logger.Log("                        Welcome to “Balloons Pops” game :)");
-                    logger.Log("");
+                    logger.Log(string.Empty);
                     logger.Log("                         Please try to pop the balloons!");
-                    logger.Log("");
+                    logger.Log(string.Empty);
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("___________________________________________________________________________________");
                     Console.WriteLine();
@@ -93,6 +93,7 @@
                     }
                 }
             }
+
             return 2;
         }
     }
