@@ -1,16 +1,45 @@
-﻿namespace PoppingBaloons
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="MainMenu.cs" company="Team-Baloon-Pop">
+//   Team-Baloon-Pop
+// </copyright>
+// <summary>
+//   The main class used to execute the whole code.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace PoppingBaloons
 {
     using System;
     using System.Linq;
     using PoppingBaloons.Interfaces;
 
+    /// <summary>
+    /// Sealed class used for logging various messages on the console:
+    /// <list type="bullet">
+    /// <item> 
+    /// <description><see cref="Main"/></description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="StartMenu"/></description> 
+    /// </item>
+    /// </list> 
+    /// </summary>
+    
     public class MainMenu
     {
+        /// <summary>
+        /// The main method that invokes <see cref="StartMenu"/> method.
+        /// </summary>
         public static void Main()
         {                
             StartMenu();
         }
 
+        /// <summary>
+        /// A method used for drawing a welcome message on the console. It waits for user
+        /// input for starting or quiting the game.
+        /// </summary>
+        /// <returns>Returns 2.</returns>
         public static int StartMenu() // 1 - Start Game , 2 - Quit Game
         {
             Console.ForegroundColor = ConsoleColor.Cyan;

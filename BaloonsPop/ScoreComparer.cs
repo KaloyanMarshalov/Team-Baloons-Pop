@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Score.cs" company="Team-Baloon-Pop">
+// <copyright file="ScoreComparer.cs" company="Team-Baloon-Pop">
 //   Team-Baloon-Pop
 // </copyright>
 // <summary>
