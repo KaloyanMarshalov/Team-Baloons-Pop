@@ -19,7 +19,6 @@ namespace PoppingBaloons
     /// </item>
     /// </list> 
     /// </summary>
-
     internal class ScoreComparer : IComparer<int>
     {
         /// <summary>

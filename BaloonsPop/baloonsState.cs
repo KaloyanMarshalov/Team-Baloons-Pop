@@ -45,9 +45,8 @@ namespace PoppingBaloons
         /// <summary>
         /// An integer variable that counts how many times a baloon is popped. When the game
         /// begins it has an initial value 0. After that before the game is over it grows by one
-        /// for every baloon pop.
+        /// for every baloon po
         /// </summary>
-        public int TurnCounter;
         private const int BoardWidth = 6;
         private const int BoardHeight = 10;
         private const int MinBaloon = 1;
@@ -76,6 +75,8 @@ namespace PoppingBaloons
 
             this.PrintArray();
         }
+
+        public int TurnCounter { get; set; }
 
         /// <summary>
         /// A method that checks if the number of baloons is in a given range.

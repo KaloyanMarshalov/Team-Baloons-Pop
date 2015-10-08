@@ -36,7 +36,6 @@ namespace PoppingBaloons
     /// </item>
     /// </list> 
     /// </summary>
-
     public class Game
     {
         private readonly List<Tuple<string, int>> highScores;
