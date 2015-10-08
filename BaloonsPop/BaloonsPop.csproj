@@ -49,6 +49,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="HighScore.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
+    <Compile Include="ListOfCommands.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="Score.cs" />
     <Compile Include="ScoreComparer.cs" />

@@ -36,7 +36,7 @@ namespace PoppingBaloons
     /// </item>
     /// </list> 
     /// </summary>
-    
+
     public class Game
     {
         private readonly List<Tuple<string, int>> highScores;
@@ -60,6 +60,7 @@ namespace PoppingBaloons
         /// <returns>The method returns a string.</returns>
         public string DisplayScoreboard()
         {
+            ListOfCommands.PrintListOFCommands();
             StringBuilder stringBuilder = new StringBuilder();
 
             if (this.highScores.Count == 0)
@@ -87,6 +88,7 @@ namespace PoppingBaloons
         /// /// <param name="command">The string the method is called upon.</param>
         public void ParseCommand(string command)
         {
+            Console.Clear();
             string[] commands = command.Split(' ');
 
             if (commands.Length == 2)
@@ -103,6 +105,7 @@ namespace PoppingBaloons
                 }
                 else
                 {
+                    ListOfCommands.PrintListOFCommands();
                     this.logger.Log("Unknown command");
                 }
             }
@@ -124,12 +127,14 @@ namespace PoppingBaloons
                         Environment.Exit(0);
                         break;
                     default:
+                        ListOfCommands.PrintListOFCommands();
                         this.logger.Log("Unknown command");
                         break;
                 }
             }
             else
             {
+                ListOfCommands.PrintListOFCommands();
                 this.logger.Log("Unknown Command");
             }
         }
@@ -148,6 +153,7 @@ namespace PoppingBaloons
 
             if (row > maxRows)
             {
+                ListOfCommands.PrintListOFCommands();
                 this.logger.Log("Indexes too big");
             }
             else
@@ -203,6 +209,7 @@ namespace PoppingBaloons
         /// </summary>
         private void Restart()
         {
+            ListOfCommands.PrintListOFCommands();
             this.state = new BaloonsState();
         }
     }

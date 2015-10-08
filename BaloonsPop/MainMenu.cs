@@ -13,7 +13,7 @@ namespace PoppingBaloons
     using System.Collections.Generic;
     using System.Linq;
     using PoppingBaloons.Interfaces;
-
+    
     /// <summary>
     /// The main class used to execute the whole code:
     /// <list type="bullet">
@@ -66,19 +66,7 @@ namespace PoppingBaloons
                 // Start Game
                 Console.Clear();
 
-                var listOfCommands = new List<string>();
-
-                listOfCommands.Add("List of Commands");
-                listOfCommands.Add("---------------------------------------");
-                listOfCommands.Add("* Use 'top' to view the top scoreboard!");
-                listOfCommands.Add("* Use 'restart' to start a new game!");
-                listOfCommands.Add("* Use 'exit' to quit the game!\n");
-
-                foreach (var item in listOfCommands)
-                {
-                    logger.Log(item);
-                }
-
+                ListOfCommands.PrintListOFCommands();  
                 Game game = new Game(logger);
 
                 while (true)
