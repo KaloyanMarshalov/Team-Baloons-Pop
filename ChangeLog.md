@@ -40,6 +40,9 @@
 * file Program.cs => MainMenu.cs
  * Added Logo using strings
  * Added method StartMenu
+ 
+* file ListOfCommands.cs
+  *method PrintListOFCommands
 
 ## Structure refactorings
 

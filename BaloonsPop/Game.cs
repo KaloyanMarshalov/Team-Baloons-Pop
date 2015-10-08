@@ -101,6 +101,7 @@ namespace PoppingBaloons
 
                 if (validRow && validCol)
                 {
+                    ListOfCommands.PrintListOFCommands();    
                     this.SendCommand(row, col);
                 }
                 else
