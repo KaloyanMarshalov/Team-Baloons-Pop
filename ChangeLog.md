@@ -57,6 +57,7 @@
 * Introduced variables boardWidth and boardHeight in BaloonsState.cs
 * Introduced variables minBaloon and maxBallon in BaloonState.cs
 * Created a method SwitchConsoleColor
+* Exported constants in HighScore.cs
 
 ## Other refactorings
 
