@@ -76,6 +76,9 @@ namespace PoppingBaloons
             this.PrintArray();
         }
 
+        /// <summary>
+        /// Gets or sets a property that counts the turns the game is played.
+        /// </summary>
         public int TurnCounter { get; set; }
 
         /// <summary>

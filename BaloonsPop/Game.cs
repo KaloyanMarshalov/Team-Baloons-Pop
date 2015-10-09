@@ -59,7 +59,7 @@ namespace PoppingBaloons
         /// <returns>The method returns a string.</returns>
         public string DisplayScoreboard()
         {
-            ListOfCommands.PrintListOFCommands();
+            ListOfCommands.PrintListOfCommands();
             StringBuilder stringBuilder = new StringBuilder();
 
             if (this.highScores.Count == 0)
@@ -100,12 +100,12 @@ namespace PoppingBaloons
 
                 if (validRow && validCol)
                 {
-                    ListOfCommands.PrintListOFCommands();    
+                    ListOfCommands.PrintListOfCommands();    
                     this.SendCommand(row, col);
                 }
                 else
                 {
-                    ListOfCommands.PrintListOFCommands();
+                    ListOfCommands.PrintListOfCommands();
                     this.logger.Log("Unknown command");
                 }
             }
@@ -127,14 +127,14 @@ namespace PoppingBaloons
                         Environment.Exit(0);
                         break;
                     default:
-                        ListOfCommands.PrintListOFCommands();
+                        ListOfCommands.PrintListOfCommands();
                         this.logger.Log("Unknown command");
                         break;
                 }
             }
             else
             {
-                ListOfCommands.PrintListOFCommands();
+                ListOfCommands.PrintListOfCommands();
                 this.logger.Log("Unknown Command");
             }
         }
@@ -153,7 +153,7 @@ namespace PoppingBaloons
 
             if (row > maxRows)
             {
-                ListOfCommands.PrintListOFCommands();
+                ListOfCommands.PrintListOfCommands();
                 this.logger.Log("Indexes too big");
             }
             else
@@ -209,7 +209,7 @@ namespace PoppingBaloons
         /// </summary>
         private void Restart()
         {
-            ListOfCommands.PrintListOFCommands();
+            ListOfCommands.PrintListOfCommands();
             this.state = new BaloonsState();
         }
     }

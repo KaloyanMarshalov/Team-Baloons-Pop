@@ -66,7 +66,7 @@ namespace PoppingBaloons
                 // Start Game
                 Console.Clear();
 
-                ListOfCommands.PrintListOFCommands();  
+                ListOfCommands.PrintListOfCommands();  
                 Game game = new Game(logger);
 
                 while (true)
