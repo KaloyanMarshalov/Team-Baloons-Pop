@@ -25,7 +25,6 @@ namespace PoppingBaloons.Interfaces
         /// A void method that later will be overriden.
         /// </summary>
         /// <param name="message">The string the method is called upon.</param>
-
         void RenderGameboard(Gameboard gameboard);
     }
 }

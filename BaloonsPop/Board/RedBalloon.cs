@@ -4,20 +4,13 @@ namespace PoppingBaloons.Board
 {
     public class RedBalloon : BoardComponent
     {
-        private readonly string color = "red";
         private readonly int value = 2;
         
         public RedBalloon()
         {
             this.IsActive = true;
-        }
-
-        public string Color {
-            get
-            {
-                return this.color;
-            }
-        }
+            this.Color = "red";
+        }        
 
         public override int GetValue()
         {

@@ -39,16 +39,16 @@ namespace PoppingBaloons.Renderers
                 Console.Write(i.ToString() + " | ");
                 for (int j = 0; j < gameboard.BoardWidth; j++)
                 {
-                    int baloonNumber = gameboard.GetElement(i, j);
-                    this.SwitchConsoleColor(baloonNumber);
+                    BoardComponent component = gameboard.GetElement(i, j);
+                    this.SwitchConsoleColor(component.Color);
                     //char currentChar = this.GetBaloonChar(baloonNumber);
-                    if (baloonNumber == 0)
+                    if (!component.IsActive)
                     {
                         Console.Write('-');
                     }
                     else
                     {
-                        Console.Write(baloonNumber);
+                        Console.Write("O");
                     }
 
                     Console.ResetColor();
@@ -87,20 +87,20 @@ namespace PoppingBaloons.Renderers
             }
         }
 
-        private void SwitchConsoleColor(int baloonNumber)
+        private void SwitchConsoleColor(string baloonColor)
         {
-            switch (baloonNumber)
+            switch (baloonColor)
             {
-                case 1:
+                case "red":
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     break;
-                case 2:
+                case "green":
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                     break;
-                case 3:
+                case "blue":
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
                     break;
-                case 4:
+                case "yellow":
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     break;
                 default:

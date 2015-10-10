@@ -5,6 +5,7 @@
     public abstract class BoardComponent
     {
         private bool isAcctive;
+        private string color;
 
         public bool IsActive 
         {
@@ -12,9 +13,21 @@
             {
                 return this.isAcctive;
             }
-            protected set
+            set
             {
                 this.isAcctive = value;
+            }
+        }
+
+        public string Color
+        {
+            get
+            {
+                return this.color;
+            }
+            set 
+            {
+                this.color = value;
             }
         }
 

@@ -52,7 +52,7 @@ namespace PoppingBaloons.Board
         //private const int MinBaloon = 1;
         //private const int MaxBaloon = 4;
 
-        private readonly int[,] contents;
+        private readonly BoardComponent[,] contents;
         private Random randomGenerator;
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace PoppingBaloons.Board
         {
             this.BoardWidth = boardWidth;
             this.BoardHeight = boardHeight;
-            this.contents = new int[this.BoardHeight, this.BoardWidth];
+            this.contents = new BoardComponent[this.BoardHeight, this.BoardWidth];
 
             this.randomGenerator = new Random();
 
@@ -71,7 +71,16 @@ namespace PoppingBaloons.Board
             {
                 for (int j = 0; j < BoardWidth; j++)
                 {
-                    this.contents[i, j] = this.randomGenerator.Next(1, 5);
+                    // TODO: Implement factory and randomizer and use it here or in a separate method
+                    int seed = this.randomGenerator.Next(0, 2);
+
+                    if (seed == 0)
+                    {
+                        this.contents[i, j] = new RedBalloon();
+                        continue;
+                    }
+
+                    this.contents[i, j] = new BlueBalloon();    
                 }
             }
         }
@@ -90,7 +99,7 @@ namespace PoppingBaloons.Board
         public bool PopBaloon(int x, int y)
         {
             ////changes the game state and returns boolean,indicating wheater the game is over
-            if (this.contents[x - 1, y - 1] == 0)
+            if (!this.contents[x - 1, y - 1].IsActive)
             {
                 Console.WriteLine("Invalid Move! Can not pop a baloon at that place!!");
                 return false;
@@ -98,7 +107,7 @@ namespace PoppingBaloons.Board
             else
             {
                 //this.TurnCounter++;
-                int currentCell = this.contents[x - 1, y - 1];
+                BoardComponent currentCell = this.contents[x - 1, y - 1];
                 int top = x - 1;
                 int bottom = x - 1;
                 int left = y - 1;
@@ -128,14 +137,14 @@ namespace PoppingBaloons.Board
                     ////first remove the elements on the same row and float the elemnts above down
                     if (x == 1)
                     {
-                        this.contents[x - 1, i] = 0;
+                        this.contents[x - 1, i].IsActive = false;
                     }
                     else
                     {
                         for (int j = x - 1; j > 0; j--)
                         {
                             this.contents[j, i] = this.contents[j - 1, i];
-                            this.contents[j - 1, i] = 0;
+                            this.contents[j - 1, i].IsActive = false;
                         }
                     }
                 }
@@ -150,7 +159,7 @@ namespace PoppingBaloons.Board
                     for (int i = top; i > 0; --i)
                     {   ////first float the elements above down and replace them
                         this.contents[i + bottom - top, y - 1] = this.contents[i, y - 1];
-                        this.contents[i, y - 1] = 0;
+                        this.contents[i, y - 1].IsActive = false;
                     }
 
                     if (bottom - top > top - 1)
@@ -159,7 +168,7 @@ namespace PoppingBaloons.Board
                         {
                             if (this.contents[i, y - 1] == currentCell)
                             {
-                                this.contents[i, y - 1] = 0;
+                                this.contents[i, y - 1].IsActive = false;
                             }
                         }
                     }
@@ -178,7 +187,7 @@ namespace PoppingBaloons.Board
         {
             foreach (var s in this.contents)
             {
-                if (s != 0)
+                if (s.IsActive)
                 {
                     return false;
                 }
@@ -195,7 +204,7 @@ namespace PoppingBaloons.Board
             return this.GameHasEnded();
         }
 
-        public int GetElement(int row, int col)
+        public BoardComponent GetElement(int row, int col)
         {
             return this.contents[row, col];
         }
