@@ -73,14 +73,15 @@ namespace PoppingBaloons.Board
                 {
                     // TODO: Implement factory and randomizer and use it here or in a separate method
                     int seed = this.randomGenerator.Next(0, 2);
+                    var balloonFactory = new BalloonMaker();
 
                     if (seed == 0)
                     {
-                        this.contents[i, j] = new RedBalloon();
+                        this.contents[i, j] = balloonFactory.MakeBalloon(BaloonColor.Red);
                         continue;
                     }
 
-                    this.contents[i, j] = new BlueBalloon();    
+                    this.contents[i, j] = balloonFactory.MakeBalloon(BaloonColor.Blue);    
                 }
             }
         }

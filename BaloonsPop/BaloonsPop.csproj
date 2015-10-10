@@ -52,10 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Board\BlueBalloon.cs" />
+    <Compile Include="Board\BalloonFactory\Balloon.cs" />
+    <Compile Include="Board\BalloonFactory\BalloonMaker.cs" />
+    <Compile Include="Board\BalloonFactory\BaloonColor.cs" />
     <Compile Include="Renderers\ConsoleRenderer.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="Board\RedBalloon.cs" />
     <Compile Include="Board\BoardComponent.cs" />
     <Compile Include="Board\BoardComponentDecorator.cs" />
     <Compile Include="Board\Gameboard.cs" />
