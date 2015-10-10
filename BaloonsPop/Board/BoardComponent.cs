@@ -4,15 +4,20 @@
 
     public abstract class BoardComponent
     {
-        public BoardComponent()
+        private bool isAcctive;
+
+        public bool IsActive 
         {
-            this.IsActive = true;
+            get
+            {
+                return this.isAcctive;
+            }
+            protected set
+            {
+                this.isAcctive = value;
+            }
         }
 
-        public bool IsActive { get; protected set; }
-
         public abstract int GetValue();
-
-        public abstract string GetColor();
     }
 }
