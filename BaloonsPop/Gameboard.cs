@@ -40,43 +40,49 @@ namespace PoppingBaloons
     /// </item>
     /// </list> 
     /// </summary>
-    public class BaloonsState
+    public class Gameboard
     {
         /// <summary>
         /// An integer variable that counts how many times a baloon is popped. When the game
         /// begins it has an initial value 0. After that before the game is over it grows by one
         /// for every baloon po
         /// </summary>
-        private const int BoardWidth = 6;
-        private const int BoardHeight = 10;
+        
         private const int MinBaloon = 1;
         private const int MaxBaloon = 4;
 
-        private readonly int[,] playField;
+        private int boardWidth;
+        private int boardHeight;
+        private readonly int[,] boardContents;
         private Random randomGenerator;
 
         /// <summary>
         /// This method randomly generates the position of the player on the game board
         /// and uses <see cref="PrintArray"/> method to print the board on the console.
         /// </summary>
-        public BaloonsState()
+        public Gameboard(int width, int height)
         {
-            this.TurnCounter = 0;
-            this.playField = new int[BoardWidth, BoardHeight];
+            this.boardWidth = width;
+            this.boardHeight = height;
+
+            this.boardContents = new int[boardWidth, boardHeight];
+
             this.randomGenerator = new Random();
 
-            for (int i = 0; i < BoardWidth; i++)
+            for (int i = 0; i < boardWidth; i++)
             {
-                for (int j = 0; j < BoardHeight; j++)
+                for (int j = 0; j < boardHeight; j++)
                 {
-                    this.playField[i, j] = this.randomGenerator.Next(1, 5);
+                    this.boardContents[i, j] = this.randomGenerator.Next(1, 5);
                 }
             }
 
             this.PrintArray();
         }
 
-        public int TurnCounter { get; set; }
+        public int BoardWidth { get; protected set; }
+
+        public int BoardHeight { get; protected set; }
 
         /// <summary>
         /// A method that checks if the number of baloons is in a given range.
@@ -105,35 +111,34 @@ namespace PoppingBaloons
         public bool PopBaloon(int x, int y)
         {
             ////changes the game state and returns boolean,indicating wheater the game is over
-            if (this.playField[x - 1, y - 1] == 0)
+            if (this.boardContents[x - 1, y - 1] == 0)
             {
                 Console.WriteLine("Invalid Move! Can not pop a baloon at that place!!");
                 return false;
             }
             else
             {
-                this.TurnCounter++;
-                int currentCell = this.playField[x - 1, y - 1];
+                int currentCell = this.boardContents[x - 1, y - 1];
                 int top = x - 1;
                 int bottom = x - 1;
                 int left = y - 1;
                 int right = y - 1;
-                while (top > 0 && (this.playField[top - 1, y - 1] == currentCell))
+                while (top > 0 && (this.boardContents[top - 1, y - 1] == currentCell))
                 {
                     top--;
                 }
 
-                while (bottom < 5 && this.playField[bottom + 1, y - 1] == currentCell)
+                while (bottom < 5 && this.boardContents[bottom + 1, y - 1] == currentCell)
                 {
                     bottom++;
                 }
 
-                while (left > 0 && this.playField[x - 1, left - 1] == currentCell)
+                while (left > 0 && this.boardContents[x - 1, left - 1] == currentCell)
                 {
                     left--;
                 }
 
-                while (right < 9 && this.playField[x - 1, right + 1] == currentCell)
+                while (right < 9 && this.boardContents[x - 1, right + 1] == currentCell)
                 {
                     right++;
                 }
@@ -143,14 +148,14 @@ namespace PoppingBaloons
                     ////first remove the elements on the same row and float the elemnts above down
                     if (x == 1)
                     {
-                        this.playField[x - 1, i] = 0;
+                        this.boardContents[x - 1, i] = 0;
                     }
                     else
                     {
                         for (int j = x - 1; j > 0; j--)
                         {
-                            this.playField[j, i] = this.playField[j - 1, i];
-                            this.playField[j - 1, i] = 0;
+                            this.boardContents[j, i] = this.boardContents[j - 1, i];
+                            this.boardContents[j - 1, i] = 0;
                         }
                     }
                 }
@@ -164,17 +169,17 @@ namespace PoppingBaloons
                 {   ////otherwise fix the problematic column as well
                     for (int i = top; i > 0; --i)
                     {   ////first float the elements above down and replace them
-                        this.playField[i + bottom - top, y - 1] = this.playField[i, y - 1];
-                        this.playField[i, y - 1] = 0;
+                        this.boardContents[i + bottom - top, y - 1] = this.boardContents[i, y - 1];
+                        this.boardContents[i, y - 1] = 0;
                     }
 
                     if (bottom - top > top - 1)
                     {   ////is there are more baloons to pop in the column than elements above them, need to pop them as well
                         for (int i = top; i <= bottom; i++)
                         {
-                            if (this.playField[i, y - 1] == currentCell)
+                            if (this.boardContents[i, y - 1] == currentCell)
                             {
-                                this.playField[i, y - 1] = 0;
+                                this.boardContents[i, y - 1] = 0;
                             }
                         }
                     }
@@ -191,7 +196,7 @@ namespace PoppingBaloons
         /// <returns>The method returns a boolean, which indicates wheather the game is over.</returns>
         public bool GameHasEnded()
         {
-            foreach (var s in this.playField)
+            foreach (var s in this.boardContents)
             {
                 if (s != 0)
                 {
@@ -209,12 +214,12 @@ namespace PoppingBaloons
         {
             Console.WriteLine("    0 1 2 3 4 5 6 7 8 9");
             Console.WriteLine("    --------------------");
-            for (int i = 0; i < BoardWidth; i++)
+            for (int i = 0; i < boardWidth; i++)
             {
                 Console.Write(i.ToString() + " | ");
-                for (int j = 0; j < BoardHeight; j++)
+                for (int j = 0; j < boardHeight; j++)
                 {
-                    int baloonNumber = this.playField[i, j];
+                    int baloonNumber = this.boardContents[i, j];
                     this.SwitchConsoleColor(baloonNumber);
                     char currentChar = this.GetBaloonChar(baloonNumber);
                     Console.Write(currentChar + " ");

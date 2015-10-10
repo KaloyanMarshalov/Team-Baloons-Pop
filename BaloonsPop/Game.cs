@@ -40,15 +40,15 @@ namespace PoppingBaloons
     {
         private readonly List<Tuple<string, int>> highScores;
         private readonly ILogger logger;
-        private BaloonsState state;
+        private Gameboard state;
 
         /// <summary>
         /// A constructor used for instantiating the class.
         /// </summary>
         /// <param name="logger">The interface the constructor demands on instatiation.</param>
-        public Game(ILogger logger)
+        public Game(int boardWidth, int boardHeight, ILogger logger)
         {
-            this.state = new BaloonsState();
+            this.state = new Gameboard(boardWidth, boardHeight);
             this.highScores = new List<Tuple<string, int>>();
             this.logger = logger;
         }
@@ -164,7 +164,7 @@ namespace PoppingBaloons
 
             if (endOfTheGame)
             {
-                this.logger.Log("Congratulations!! You popped all the baloons in " + this.state.TurnCounter + " moves!");
+                this.logger.Log("Congratulations!! You popped all the baloons in WE NEED TO HAVE SCORE moves!");
                 this.UpdateScoreboard();
                 this.Restart();
             }
@@ -188,20 +188,18 @@ namespace PoppingBaloons
 
             if (this.highScores.Count < maxPlayersInHighScores)
             {
-                add(this.state.TurnCounter);
                 return;
             }
             else
             {
-                if (this.highScores.ElementAt<Tuple<string, int>>(4).Item2 >= this.state.TurnCounter)
+                // TODO: Total rework, this has to be in the HighScore class
+                if (this.highScores.ElementAt<Tuple<string, int>>(4).Item2 >= 1)
                 {
-                    add(this.state.TurnCounter);
                     this.highScores.RemoveRange(4, 1); ////if the new name replaces one of the old ones, remove the old one
                 }
             }
 
             this.highScores.Sort((p1, p2) => p1.Item2.CompareTo(p2.Item2));
-            this.state = new BaloonsState();
         }
 
         /// <summary>
@@ -210,7 +208,6 @@ namespace PoppingBaloons
         private void Restart()
         {
             ListOfCommands.PrintListOFCommands();
-            this.state = new BaloonsState();
         }
     }
 }

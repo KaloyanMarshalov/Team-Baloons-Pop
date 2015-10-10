@@ -63,11 +63,14 @@ namespace PoppingBaloons
 
             if (keyInfo.Key == ConsoleKey.Enter)
             {
+                //TODO: Theese have to be the other way arround 
+                const int BoardWidth = 6;
+                const int BoardHeight = 10;
                 // Start Game
                 Console.Clear();
 
                 ListOfCommands.PrintListOFCommands();  
-                Game game = new Game(logger);
+                Game game = new Game(BoardWidth, BoardHeight, logger);
 
                 while (true)
                 {
