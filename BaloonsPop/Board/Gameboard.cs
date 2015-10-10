@@ -52,8 +52,7 @@ namespace PoppingBaloons.Board
         //private const int MinBaloon = 1;
         //private const int MaxBaloon = 4;
 
-        private readonly BoardComponent[,] contents;
-        private Random randomGenerator;
+        private readonly BoardComponent[,] contents;         
 
         /// <summary>
         /// This method randomly generates the position of the player on the game board
@@ -63,31 +62,48 @@ namespace PoppingBaloons.Board
         {
             this.BoardWidth = boardWidth;
             this.BoardHeight = boardHeight;
-            this.contents = new BoardComponent[this.BoardHeight, this.BoardWidth];
-
-            this.randomGenerator = new Random();
-
-            for (int i = 0; i < this.BoardHeight; i++)
-            {
-                for (int j = 0; j < BoardWidth; j++)
-                {
-                    // TODO: Implement factory and randomizer and use it here or in a separate method
-                    int seed = this.randomGenerator.Next(0, 2);
-
-                    if (seed == 0)
-                    {
-                        this.contents[i, j] = new RedBalloon();
-                        continue;
-                    }
-
-                    this.contents[i, j] = new BlueBalloon();    
-                }
-            }
+            this.contents = new BoardComponent[this.BoardHeight, this.BoardWidth]; 
+            GetBalloonsOnBoard();                   
         }
 
         public int BoardWidth { get; protected set; }
 
         public int BoardHeight { get; protected set; }        
+
+        /// <summary>
+        /// This Method generades differnt colors of balloons on the gameboard
+        /// </summary>
+        public void GetBalloonsOnBoard()
+        {    
+            Random randomGenerator = new Random();
+
+            for (int i = 0; i < this.BoardHeight; i++)
+            {
+                for (int j = 0; j < BoardWidth; j++)
+                {                       
+                    int seed = randomGenerator.Next(0, 4);
+                    var balloonFactory = new BalloonMaker();
+
+                    switch (seed)
+                    {
+                        case 0:
+                            this.contents[i, j] = balloonFactory.MakeBalloon(BaloonColor.Red);
+                            continue;
+                        case 1:
+                            this.contents[i, j] = balloonFactory.MakeBalloon(BaloonColor.Blue);
+                            continue;
+                        case 2:
+                            this.contents[i, j] = balloonFactory.MakeBalloon(BaloonColor.Green);
+                            continue;
+                        case 3:
+                            this.contents[i, j] = balloonFactory.MakeBalloon(BaloonColor.Yellow);
+                            continue;
+                        default:
+                            throw new ArgumentException();
+                    }
+                }
+            }
+        }
 
         /// <summary>
         /// This method accepts two integer parameters and uses them to find where on the field is 
