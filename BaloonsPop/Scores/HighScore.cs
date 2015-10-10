@@ -31,6 +31,9 @@ namespace PoppingBaloons.Scores
     public class HighScore
     {
         private const int MaxScoreCount = 5;
+        private const string NullableScoreExMessage = "Cannot add score with value of null";
+        private const string EmptyScoreBoard = "The scoreboard is empty";
+
         private readonly SortedList<int, Score> scoreList;
         private readonly IComparer<int> descendingComparer = new ScoreComparer();
 
@@ -52,7 +55,7 @@ namespace PoppingBaloons.Scores
         {
             if (scoreToAdd == null)
             {
-                throw new ArgumentNullException("Cannot add score with value of null");
+                throw new ArgumentNullException(NullableScoreExMessage);
             }
 
             this.scoreList.Add(scoreToAdd.Points, scoreToAdd);
@@ -71,12 +74,12 @@ namespace PoppingBaloons.Scores
         {
             if (this.scoreList.Count == 0)
             {
-                return "The scoreboard is empty";
+                return EmptyScoreBoard;
             }
 
             StringBuilder stringBuilder = new StringBuilder();
 
-            stringBuilder.AppendLine("Top performers:");
+            stringBuilder.AppendLine("Top performers: ");
 
             foreach (var score in this.scoreList)
             {

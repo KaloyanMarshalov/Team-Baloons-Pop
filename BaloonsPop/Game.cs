@@ -111,12 +111,12 @@ namespace PoppingBaloons
 
                 if (validRow && validCol)
                 {
-                    ListOfCommands.PrintListOFCommands();    
+                    ListOfCommands.PrintListOfCommands();    
                     this.SendCommand(row, col);
                 }
                 else
                 {
-                    ListOfCommands.PrintListOFCommands();
+                    ListOfCommands.PrintListOfCommands();
                     //this.renderer.LogMessage("Unknown command");
                 }
             }
@@ -138,14 +138,14 @@ namespace PoppingBaloons
                         Environment.Exit(0);
                         break;
                     default:
-                        ListOfCommands.PrintListOFCommands();
+                        ListOfCommands.PrintListOfCommands();
                         //this.renderer.LogMessage("Unknown command");
                         break;
                 }
             }
             else
             {
-                ListOfCommands.PrintListOFCommands();
+                ListOfCommands.PrintListOfCommands();
                 //this.renderer.LogMessage("Unknown Command");
             }
         }
@@ -164,7 +164,7 @@ namespace PoppingBaloons
 
             if (row > maxRows)
             {
-                ListOfCommands.PrintListOFCommands();
+                ListOfCommands.PrintListOfCommands();
                 //this.renderer.LogMessage("Indexes too big");
             }
             else
@@ -218,7 +218,7 @@ namespace PoppingBaloons
         /// </summary>
         private void Restart()
         {
-            ListOfCommands.PrintListOFCommands();
+            ListOfCommands.PrintListOfCommands();
         }
     }
 }
