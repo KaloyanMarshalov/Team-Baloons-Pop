@@ -52,7 +52,7 @@ namespace PoppingBaloons.Board
         //private const int MinBaloon = 1;
         //private const int MaxBaloon = 4;
 
-        private readonly BoardComponent[,] contents;         
+        private readonly BoardComponent[,] contents;
 
         /// <summary>
         /// This method randomly generates the position of the player on the game board
@@ -62,37 +62,30 @@ namespace PoppingBaloons.Board
         {
             this.BoardWidth = boardWidth;
             this.BoardHeight = boardHeight;
-            this.contents = new BoardComponent[this.BoardHeight, this.BoardWidth]; 
-            GetBalloonsOnBoard();                   
+            this.contents = new BoardComponent[this.BoardHeight, this.BoardWidth];
+            GetBalloonsOnBoard();
         }
 
         public int BoardWidth { get; protected set; }
 
-        public int BoardHeight { get; protected set; }        
+        public int BoardHeight { get; protected set; }
 
         /// <summary>
         /// This Method generades differnt colors of balloons on the gameboard
         /// </summary>
         public void GetBalloonsOnBoard()
-        {    
+        {
             Random randomGenerator = new Random();
 
             for (int i = 0; i < this.BoardHeight; i++)
             {
                 for (int j = 0; j < BoardWidth; j++)
-<<<<<<< HEAD
-                {                       
-                    int seed = randomGenerator.Next(0, 4);
-=======
                 {
-                    // TODO: Implement factory and randomizer and use it here or in a separate method
-                    int seed = this.randomGenerator.Next(0, 2);
->>>>>>> 94669612c515b656c8353de09ace201b98d39248
+                    int seed = randomGenerator.Next(0, 4);
                     var balloonFactory = new BalloonMaker();
 
                     switch (seed)
                     {
-<<<<<<< HEAD
                         case 0:
                             this.contents[i, j] = balloonFactory.MakeBalloon(BaloonColor.Red);
                             continue;
@@ -108,13 +101,6 @@ namespace PoppingBaloons.Board
                         default:
                             throw new ArgumentException();
                     }
-=======
-                        this.contents[i, j] = balloonFactory.MakeBalloon(BaloonColor.Red);
-                        continue;
-                    }
-
-                    this.contents[i, j] = balloonFactory.MakeBalloon(BaloonColor.Blue);    
->>>>>>> 94669612c515b656c8353de09ace201b98d39248
                 }
             }
         }
@@ -224,9 +210,9 @@ namespace PoppingBaloons.Board
             }
 
             return true;
-        }        
+        }
 
-        private bool EndGame() 
+        private bool EndGame()
         {
             Console.WriteLine();
             //this.PrintArray();
@@ -238,5 +224,5 @@ namespace PoppingBaloons.Board
         {
             return this.contents[row, col];
         }
-    } 
+    }
 }
