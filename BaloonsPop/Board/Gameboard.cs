@@ -80,12 +80,19 @@ namespace PoppingBaloons.Board
             for (int i = 0; i < this.BoardHeight; i++)
             {
                 for (int j = 0; j < BoardWidth; j++)
+<<<<<<< HEAD
                 {                       
                     int seed = randomGenerator.Next(0, 4);
+=======
+                {
+                    // TODO: Implement factory and randomizer and use it here or in a separate method
+                    int seed = this.randomGenerator.Next(0, 2);
+>>>>>>> 94669612c515b656c8353de09ace201b98d39248
                     var balloonFactory = new BalloonMaker();
 
                     switch (seed)
                     {
+<<<<<<< HEAD
                         case 0:
                             this.contents[i, j] = balloonFactory.MakeBalloon(BaloonColor.Red);
                             continue;
@@ -101,6 +108,13 @@ namespace PoppingBaloons.Board
                         default:
                             throw new ArgumentException();
                     }
+=======
+                        this.contents[i, j] = balloonFactory.MakeBalloon(BaloonColor.Red);
+                        continue;
+                    }
+
+                    this.contents[i, j] = balloonFactory.MakeBalloon(BaloonColor.Blue);    
+>>>>>>> 94669612c515b656c8353de09ace201b98d39248
                 }
             }
         }
