@@ -1,15 +1,24 @@
 ﻿using System;
-using PoppingBaloons.Interfaces;
 
 namespace PoppingBaloons.Board
 {
     class Balloon : BoardComponent
     {
-        public const string RenderingSymbol = "O";
-
-        public override void RenderComponent(IRenderer renderer)
+        
+        public Balloon()
+            :base()
+        { 
+        }
+        public override int GetValue()
         {
-            //renderer.RenderGameboard(BaloonSymbol);
+            // TODO: Implement this method
+            throw new NotImplementedException();
+        }
+
+        public override string GetColor()
+        {
+            // TODO: Implement this method
+            throw new NotImplementedException();
         }
     }
 }

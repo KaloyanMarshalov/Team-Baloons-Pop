@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace PoppingBaloons
+namespace PoppingBaloons.Scores
 {
     using System.Collections.Generic;
 

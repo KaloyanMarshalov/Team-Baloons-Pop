@@ -1,17 +1,23 @@
-﻿namespace PoppingBaloons.Board
+﻿using System;
+
+namespace PoppingBaloons.Board
 {
     class RedDecorator: BoardComponentDecorator
     {
-        private const string Color = "red";
-
         public RedDecorator(BoardComponent component)
             :base(component)
         { 
         }
-
-        public override void RenderComponent(Interfaces.IRenderer logger)
+        public override int GetValue()
         {
-            base.RenderComponent(logger);
+            // TODO: Implement this method
+            throw new NotImplementedException();
+        }
+
+        public override string GetColor()
+        {
+            // TODO: Implement this method
+            throw new NotImplementedException();
         }
     }
 }

@@ -16,6 +16,7 @@ namespace PoppingBaloons
 
     using PoppingBaloons.Board;
     using Interfaces;
+    using Scores;
 
     /// <summary>
     /// A class that displays and updates the scores on the console:
@@ -84,6 +85,7 @@ namespace PoppingBaloons
         {
             while (true)
             {
+                Console.Clear();
                 renderer.RenderGameboard(gameBoard);
                 this.ParseCommand(Console.ReadLine());
             }
@@ -96,8 +98,7 @@ namespace PoppingBaloons
         /// </summary>
         /// /// <param name="command">The string the method is called upon.</param>
         public void ParseCommand(string command)
-        {
-            Console.Clear();
+        {            
             string[] commands = command.Split(' ');
 
             if (commands.Length == 2)

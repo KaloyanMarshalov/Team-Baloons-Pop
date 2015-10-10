@@ -3,7 +3,7 @@
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    using PoppingBaloons;
+    using PoppingBaloons.Scores;
 
     [TestClass]
     public class HighScoreTest

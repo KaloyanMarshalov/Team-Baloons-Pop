@@ -6,7 +6,7 @@
 //   A class that watches for a change in state of the baloons.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-namespace PoppingBaloons
+namespace PoppingBaloons.Renderers
 {
     using System;
 
@@ -32,7 +32,6 @@ namespace PoppingBaloons
 
         public void RenderGameboard(Gameboard gameboard)
         {
-            Console.WriteLine("new renderer");
             Console.WriteLine("    0 1 2 3 4 5 6 7 8 9");
             Console.WriteLine("    --------------------");
             for (int i = 0; i < gameboard.BoardHeight; i++)
@@ -43,15 +42,21 @@ namespace PoppingBaloons
                     int baloonNumber = gameboard.GetElement(i, j);
                     this.SwitchConsoleColor(baloonNumber);
                     //char currentChar = this.GetBaloonChar(baloonNumber);
-                    Console.Write(baloonNumber);
+                    if (baloonNumber == 0)
+                    {
+                        Console.Write('-');
+                    }
+                    else
+                    {
+                        Console.Write(baloonNumber);
+                    }
+
                     Console.ResetColor();
                     Console.Write(" ");
 
                 }
 
-                Console.WriteLine("| ");
-
-                
+                Console.WriteLine("| ");                
             }
 
             Console.WriteLine("    --------------------");
@@ -102,6 +107,6 @@ namespace PoppingBaloons
                     Console.ResetColor();
                     break;
             }
-        }
+        }        
     }
 }

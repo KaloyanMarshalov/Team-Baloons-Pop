@@ -13,6 +13,8 @@ namespace PoppingBaloons
     using System.Collections.Generic;
     using System.Linq;
     using PoppingBaloons.Interfaces;
+
+    using Renderers;
     
     /// <summary>
     /// The main class used to execute the whole code:

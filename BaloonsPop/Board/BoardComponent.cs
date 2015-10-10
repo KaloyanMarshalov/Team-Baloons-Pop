@@ -11,6 +11,8 @@
 
         public bool IsActive { get; protected set; }
 
-        public abstract void RenderComponent(IRenderer logger);
+        public abstract int GetValue();
+
+        public abstract string GetColor();
     }
 }

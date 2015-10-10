@@ -13,10 +13,5 @@
         {
             this.decoratedComponent = component;
         }
-
-        public override void RenderComponent(IRenderer logger)
-        {
-            decoratedComponent.RenderComponent(logger);
-        }
     }
 }

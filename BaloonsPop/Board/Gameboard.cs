@@ -46,11 +46,11 @@ namespace PoppingBaloons.Board
         /// begins it has an initial value 0. After that before the game is over it grows by one
         /// for every baloon po
         /// </summary>
-        private int boardWidth;
-        private int boardHeight;
+        //private int boardWidth;
+        //private int boardHeight;
 
-        private const int MinBaloon = 1;
-        private const int MaxBaloon = 4;
+        //private const int MinBaloon = 1;
+        //private const int MaxBaloon = 4;
 
         private readonly int[,] contents;
         private Random randomGenerator;
@@ -74,30 +74,11 @@ namespace PoppingBaloons.Board
                     this.contents[i, j] = this.randomGenerator.Next(1, 5);
                 }
             }
-
-            //this.PrintArray();
         }
 
         public int BoardWidth { get; protected set; }
 
-        public int BoardHeight { get; protected set; }
-
-        /// <summary>
-        /// A method that checks if the number of baloons is in a given range.
-        /// </summary>
-        /// <param name="baloonNum">The integer the method is called upon.</param>
-        /// <returns>The method returns a char or a '-'.</returns>
-        public char GetBaloonChar(int baloonNum)
-        {
-            if (baloonNum >= MinBaloon && baloonNum <= MaxBaloon)
-            {
-                return baloonNum.ToString()[0];
-            }
-            else
-            {
-                return '-';
-            }
-        }
+        public int BoardHeight { get; protected set; }        
 
         /// <summary>
         /// This method accepts two integer parameters and uses them to find where on the field is 
@@ -204,60 +185,7 @@ namespace PoppingBaloons.Board
             }
 
             return true;
-        }
-
-        /// <summary>
-        /// This method is used for printing the game board on the console.
-        /// </summary>
-        public void PrintArray()
-        {
-            Console.WriteLine("    0 1 2 3 4 5 6 7 8 9");
-            Console.WriteLine("    --------------------");
-            for (int i = 0; i < BoardWidth; i++)
-            {
-                Console.Write(i.ToString() + " | ");
-                for (int j = 0; j < BoardHeight; j++)
-                {
-                    int baloonNumber = this.contents[i, j];
-                    this.SwitchConsoleColor(baloonNumber);
-                    char currentChar = this.GetBaloonChar(baloonNumber);
-                    Console.Write(currentChar + " ");
-                }
-
-                Console.ResetColor();
-                Console.WriteLine("| ");
-            }
-
-            Console.WriteLine("    --------------------");
-            Console.WriteLine("Insert row and column or other command");
-        }
-
-        /// <summary>
-        /// This method accepts an integer parameter and depending on that it changes the
-        /// color with which the baloon number will be printed on the console.
-        /// </summary>
-        /// <param name="baloonNumber">The integer the method is called upon.</param>
-        private void SwitchConsoleColor(int baloonNumber)
-        {
-            switch (baloonNumber)
-            {
-                case 1:
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    break;
-                case 2:
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    break;
-                case 3:
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    break;
-                case 4:
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    break;
-                default:
-                    Console.ResetColor();
-                    break;
-            }
-        }
+        }        
 
         private bool EndGame() 
         {
