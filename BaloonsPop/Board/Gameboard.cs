@@ -96,16 +96,17 @@ namespace PoppingBaloons.Board
         /// <param name="x">The integer the method is called upon.</param>
         /// <param name="y">The integer the method is called upon.</param>
         /// <returns>The method returns a boolean, which indicates wheather the game is over.</returns>
-        public bool PopBaloon(int x, int y)
+        public int PopBaloon(int x, int y)
         {
             ////changes the game state and returns boolean,indicating wheater the game is over
             if (!this.contents[x - 1, y - 1].IsActive)
             {
-                Console.WriteLine("Invalid Move! Can not pop a baloon at that place!!");
-                return false;
+                return 0;
             }
             else
             {
+                int thisMoveScore = 0;
+
                 //this.TurnCounter++;
                 BoardComponent currentCell = this.contents[x - 1, y - 1];
                 int top = x - 1;
@@ -152,7 +153,7 @@ namespace PoppingBaloons.Board
                 ////if that's enough,just stop
                 if (top == bottom)
                 {
-                    return this.EndGame();
+                    return 0;
                 }
                 else
                 {   ////otherwise fix the problematic column as well
@@ -174,7 +175,7 @@ namespace PoppingBaloons.Board
                     }
                 }
 
-                return this.EndGame();
+                return 0;
             }
         }
 

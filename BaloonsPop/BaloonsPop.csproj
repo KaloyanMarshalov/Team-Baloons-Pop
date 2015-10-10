@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Board\BlueBalloon.cs" />
+    <Compile Include="Board\PopStrategies\PopStrategy.cs" />
     <Compile Include="Renderers\ConsoleRenderer.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Board\RedBalloon.cs" />
