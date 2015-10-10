@@ -32,80 +32,85 @@ namespace PoppingBaloons
         /// </summary>
         public static void Main()
         {
-            StartMenu();
+            ConsoleRenderer consoleRenderer = ConsoleRenderer.LoggerInstance;
+            Game game = new Game(10, 6, consoleRenderer);
+            game.Start();
+
+            //StartMenu();
         }
 
-        /// <summary>
-        /// A method used for drawing a welcome message on the console. It waits for user
-        /// input for starting or quiting the game.
-        /// </summary>
-        /// <returns>Returns 2.</returns>
-        public static int StartMenu() // 1 - Start Game , 2 - Quit Game
-        {
-            string logo = "     ____  _____  _     _     _____  _____  _     _     _____  _____  _____  _____\n " +
-                          "   | _  ||  _  || |   | |   |  _  ||  _  ||  \\  | |   |  _  ||  _  ||  _  ||  ___|\n " +
-                          "   |   / | |_| || |   | |   | | | || | | || |\\ \\| |   | |_| || | | || |_| || |___ \n" +
-                         "    | _ \\ |  _  || |__ | |__ | |_| || |_| || |  \\  |   |  _ _|| |_| ||  _ _| ___  |\n" +
-                         "    |____||_| |_||____||____||_____||_____||_|   |_|   |_|    |_____||_|    |_____|  \n\n" +
-                         "                           Welcome to “Balloons Pops” game :)\n\n" +
-                         "                            Please try to pop the balloons!\n" +
-                         "__________________________________________________________________________________________\n";
+        ///// <summary>
+        ///// A method used for drawing a welcome message on the console. It waits for user
+        ///// input for starting or quiting the game.
+        ///// </summary>
+        ///// <returns>Returns 2.</returns>
+        //public static int StartMenu() // 1 - Start Game , 2 - Quit Game
+        //{
+        //    string logo = "     ____  _____  _     _     _____  _____  _     _     _____  _____  _____  _____\n " +
+        //                  "   | _  ||  _  || |   | |   |  _  ||  _  ||  \\  | |   |  _  ||  _  ||  _  ||  ___|\n " +
+        //                  "   |   / | |_| || |   | |   | | | || | | || |\\ \\| |   | |_| || | | || |_| || |___ \n" +
+        //                 "    | _ \\ |  _  || |__ | |__ | |_| || |_| || |  \\  |   |  _ _|| |_| ||  _ _| ___  |\n" +
+        //                 "    |____||_| |_||____||____||_____||_____||_|   |_|   |_|    |_____||_|    |_____|  \n\n" +
+        //                 "                           Welcome to “Balloons Pops” game :)\n\n" +
+        //                 "                            Please try to pop the balloons!\n" +
+        //                 "__________________________________________________________________________________________\n";
 
-            ILogger logger = ConsoleLogger.LoggerInstance;
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            logger.Log(logo);
-            Console.ForegroundColor = ConsoleColor.Red;
-            logger.Log("                                   > START GAME <\n");
-            Console.ForegroundColor = ConsoleColor.White;
-            logger.Log("                                     QUIT GAME");
-            ConsoleKeyInfo keyInfo;
-            keyInfo = Console.ReadKey(true);
+        //    IRenderer logger = ConsoleRenderer.LoggerInstance;
+        //    Console.ForegroundColor = ConsoleColor.Cyan;
+        //    //logger.LogMessage(logo);
+        //    Console.ForegroundColor = ConsoleColor.Red;
+        //    //logger.LogMessage("                                   > START GAME <\n");
+        //    Console.ForegroundColor = ConsoleColor.White;
+        //    //logger.LogMessage("                                     QUIT GAME");
+        //    ConsoleKeyInfo keyInfo;
+        //    keyInfo = Console.ReadKey(true);
 
-            if (keyInfo.Key == ConsoleKey.Enter)
-            {
-                //TODO: Theese have to be the other way arround 
-                const int BoardWidth = 6;
-                const int BoardHeight = 10;
-                // Start Game
-                Console.Clear();
+        //    if (keyInfo.Key == ConsoleKey.Enter)
+        //    {
+        //        //TODO: Theese have to be the other way arround 
+        //        const int BoardWidth = 6;
+        //        const int BoardHeight = 10;
+        //        // Start Game
+        //        Console.Clear();
 
-                ListOfCommands.PrintListOFCommands();  
-                Game game = new Game(BoardWidth, BoardHeight, logger);
+        //        ListOfCommands.PrintListOFCommands();  
+        //        Game game = new Game(BoardWidth, BoardHeight, logger);
 
-                while (true)
-                {
-                    game.ParseCommand(Console.ReadLine());
-                }
-            }
-            else
-            {
-                if (keyInfo.Key == ConsoleKey.DownArrow || keyInfo.Key == ConsoleKey.UpArrow)
-                {
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    logger.Log(logo);
-                    Console.ForegroundColor = ConsoleColor.White;
-                    logger.Log("                                     START GAME\n");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    logger.Log("                                   > QUIT GAME <");
+        //        while (true)
+        //        {
+                    
+        //            game.ParseCommand(Console.ReadLine());
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (keyInfo.Key == ConsoleKey.DownArrow || keyInfo.Key == ConsoleKey.UpArrow)
+        //        {
+        //            Console.Clear();
+        //            Console.ForegroundColor = ConsoleColor.Cyan;
+        //            //logger.LogMessage(logo);
+        //            Console.ForegroundColor = ConsoleColor.White;
+        //            //logger.LogMessage("                                     START GAME\n");
+        //            Console.ForegroundColor = ConsoleColor.Red;
+        //            //logger.LogMessage("                                   > QUIT GAME <");
 
-                    if (Console.ReadKey(true).Key == ConsoleKey.Enter)
-                    {
-                        // Quit Game
-                        logger.Log("Thanks for playing!!!");
-                        Environment.Exit(0);
-                    }
-                    else
-                    {
-                        if (Console.ReadKey(true).Key == ConsoleKey.UpArrow || Console.ReadKey(true).Key == ConsoleKey.DownArrow)
-                        {
-                            Console.Clear();
-                        }
-                    }
-                }
-            }
+        //            if (Console.ReadKey(true).Key == ConsoleKey.Enter)
+        //            {
+        //                // Quit Game
+        //                //logger.LogMessage("Thanks for playing!!!");
+        //                Environment.Exit(0);
+        //            }
+        //            else
+        //            {
+        //                if (Console.ReadKey(true).Key == ConsoleKey.UpArrow || Console.ReadKey(true).Key == ConsoleKey.DownArrow)
+        //                {
+        //                    Console.Clear();
+        //                }
+        //            }
+        //        }
+        //    }
 
-            return StartMenu();
-        }
+        //    return StartMenu();
+        //}
     }
 }

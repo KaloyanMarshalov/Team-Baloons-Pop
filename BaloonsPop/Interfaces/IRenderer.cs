@@ -9,6 +9,8 @@
 
 namespace PoppingBaloons.Interfaces
 {
+    using PoppingBaloons.Board;
+
     /// <summary>
     /// Sealed class used for logging various messages on the console:
     /// <list type="bullet">
@@ -17,12 +19,13 @@ namespace PoppingBaloons.Interfaces
     /// </item>
     /// </list> 
     /// </summary>
-    public interface ILogger
+    public interface IRenderer
     {
         /// <summary>
         /// A void method that later will be overriden.
         /// </summary>
         /// <param name="message">The string the method is called upon.</param>
-        void Log(string message);
+
+        void RenderGameboard(Gameboard gameboard);
     }
 }

@@ -14,6 +14,7 @@ namespace PoppingBaloons
     using System.Linq;
     using System.Text;
 
+    using PoppingBaloons.Board;
     using Interfaces;
 
     /// <summary>
@@ -38,45 +39,54 @@ namespace PoppingBaloons
     /// </summary>
     public class Game
     {
-        private readonly List<Tuple<string, int>> highScores;
-        private readonly ILogger logger;
-        private Gameboard state;
+        private readonly Score score;
+        private readonly IRenderer renderer;
+        private Gameboard gameBoard;
 
         /// <summary>
         /// A constructor used for instantiating the class.
         /// </summary>
-        /// <param name="logger">The interface the constructor demands on instatiation.</param>
-        public Game(int boardWidth, int boardHeight, ILogger logger)
+        /// <param name="renderer">The interface the constructor demands on instatiation.</param>
+        public Game(int boardWidth, int boardHeight, IRenderer renderer)
         {
-            this.state = new Gameboard(boardWidth, boardHeight);
-            this.highScores = new List<Tuple<string, int>>();
-            this.logger = logger;
+            this.gameBoard = new Gameboard(boardWidth, boardHeight);
+            this.score = new Score("anon", 0);
+            this.renderer = renderer;
         }
 
         /// <summary>
         /// A method that is used to display the score in the form of text.
         /// </summary>
         /// <returns>The method returns a string.</returns>
-        public string DisplayScoreboard()
+        //public string DisplayScoreboard()
+        //{
+        //    ListOfCommands.PrintListOFCommands();
+        //    StringBuilder stringBuilder = new StringBuilder();
+
+        //    if (this.score.Count == 0)
+        //    {
+        //        stringBuilder.AppendLine("The scoreboard is empty");
+        //    }
+        //    else
+        //    {
+        //        stringBuilder.AppendLine("Top performers:");
+
+        //        foreach (Tuple<string, int> score in this.score)
+        //        {
+        //            stringBuilder.AppendLine(score.Item1 + "  " + score.Item2 + " turns ");
+        //        }
+        //    }
+
+        //    return stringBuilder.ToString();
+        //}
+
+        public void Start()
         {
-            ListOfCommands.PrintListOFCommands();
-            StringBuilder stringBuilder = new StringBuilder();
-
-            if (this.highScores.Count == 0)
+            while (true)
             {
-                stringBuilder.AppendLine("The scoreboard is empty");
+                renderer.RenderGameboard(gameBoard);
+                this.ParseCommand(Console.ReadLine());
             }
-            else
-            {
-                stringBuilder.AppendLine("Top performers:");
-
-                foreach (Tuple<string, int> score in this.highScores)
-                {
-                    stringBuilder.AppendLine(score.Item1 + "  " + score.Item2 + " turns ");
-                }
-            }
-
-            return stringBuilder.ToString();
         }
 
         /// <summary>
@@ -106,7 +116,7 @@ namespace PoppingBaloons
                 else
                 {
                     ListOfCommands.PrintListOFCommands();
-                    this.logger.Log("Unknown command");
+                    //this.renderer.LogMessage("Unknown command");
                 }
             }
             else if (commands.Length == 1)
@@ -120,22 +130,22 @@ namespace PoppingBaloons
                         this.Restart();
                         break;
                     case "top":
-                        this.DisplayScoreboard();
+                        //this.DisplayScoreboard();
                         break;
                     case "exit":
-                        this.logger.Log("Thanks for playing!!!");
+                        //this.renderer.LogMessage("Thanks for playing!!!");
                         Environment.Exit(0);
                         break;
                     default:
                         ListOfCommands.PrintListOFCommands();
-                        this.logger.Log("Unknown command");
+                        //this.renderer.LogMessage("Unknown command");
                         break;
                 }
             }
             else
             {
                 ListOfCommands.PrintListOFCommands();
-                this.logger.Log("Unknown Command");
+                //this.renderer.LogMessage("Unknown Command");
             }
         }
 
@@ -154,18 +164,18 @@ namespace PoppingBaloons
             if (row > maxRows)
             {
                 ListOfCommands.PrintListOFCommands();
-                this.logger.Log("Indexes too big");
+                //this.renderer.LogMessage("Indexes too big");
             }
             else
             {
                 ////if this turn ends the game, try to update the scoreboard
-                endOfTheGame = this.state.PopBaloon(row + 1, column + 1);
+                endOfTheGame = this.gameBoard.PopBaloon(row + 1, column + 1);
             }
 
             if (endOfTheGame)
             {
-                this.logger.Log("Congratulations!! You popped all the baloons in WE NEED TO HAVE SCORE moves!");
-                this.UpdateScoreboard();
+                //this.renderer.LogMessage("Congratulations!! You popped all the baloons in WE NEED TO HAVE SCORE moves!");
+                //this.UpdateScoreboard();
                 this.Restart();
             }
         }
@@ -174,33 +184,33 @@ namespace PoppingBaloons
         /// A method used to update the score. It checks if a new player name is inserted and
         /// replaces the old one.
         /// </summary>
-        private void UpdateScoreboard()
-        {
-            Action<int> add = count => ////function to get the player name and add a tuple to the scoreboard
-            {
-                logger.Log("Enter Name: ");
-                string playerName = Console.ReadLine();
-                Tuple<string, int> scoresOfPlayer = Tuple.Create<string, int>(playerName, count);
-                highScores.Add(scoresOfPlayer);
-            };
+        //private void UpdateScoreboard()
+        //{
+        //    Action<int> add = count => ////function to get the player name and add a tuple to the scoreboard
+        //    {
+        //        renderer.LogMessage("Enter Name: ");
+        //        string playerName = Console.ReadLine();
+        //        Tuple<string, int> scoresOfPlayer = Tuple.Create<string, int>(playerName, count);
+        //        score.Add(scoresOfPlayer);
+        //    };
 
-            int maxPlayersInHighScores = 5;
+        //    int maxPlayersInHighScores = 5;
 
-            if (this.highScores.Count < maxPlayersInHighScores)
-            {
-                return;
-            }
-            else
-            {
-                // TODO: Total rework, this has to be in the HighScore class
-                if (this.highScores.ElementAt<Tuple<string, int>>(4).Item2 >= 1)
-                {
-                    this.highScores.RemoveRange(4, 1); ////if the new name replaces one of the old ones, remove the old one
-                }
-            }
+        //    if (this.score.Count < maxPlayersInHighScores)
+        //    {
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        // TODO: Total rework, this has to be in the HighScore class
+        //        if (this.score.ElementAt<Tuple<string, int>>(4).Item2 >= 1)
+        //        {
+        //            this.score.RemoveRange(4, 1); ////if the new name replaces one of the old ones, remove the old one
+        //        }
+        //    }
 
-            this.highScores.Sort((p1, p2) => p1.Item2.CompareTo(p2.Item2));
-        }
+        //    this.score.Sort((p1, p2) => p1.Item2.CompareTo(p2.Item2));
+        //}
 
         /// <summary>
         /// A method used for making a new instance of the <see cref="BaloonsState()"/> method.

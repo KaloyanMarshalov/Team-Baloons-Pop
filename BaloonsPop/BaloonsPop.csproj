@@ -44,11 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Gameboard.cs" />
-    <Compile Include="ConsoleLogger.cs" />
+    <Compile Include="OLDGameboard.cs" />
+    <Compile Include="ConsoleRenderer.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="Board\Balloon.cs" />
+    <Compile Include="Board\BoardComponent.cs" />
+    <Compile Include="Board\BoardComponentDecorator.cs" />
+    <Compile Include="Board\Gameboard.cs" />
+    <Compile Include="Board\RedDecorator.cs" />
     <Compile Include="HighScore.cs" />
-    <Compile Include="Interfaces\ILogger.cs" />
+    <Compile Include="Interfaces\IRenderer.cs" />
     <Compile Include="ListOfCommands.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="Score.cs" />

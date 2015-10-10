@@ -40,7 +40,7 @@ namespace PoppingBaloons
     /// </item>
     /// </list> 
     /// </summary>
-    public class Gameboard
+    public class OLDGameboard
     {
         /// <summary>
         /// An integer variable that counts how many times a baloon is popped. When the game
@@ -60,7 +60,7 @@ namespace PoppingBaloons
         /// This method randomly generates the position of the player on the game board
         /// and uses <see cref="PrintArray"/> method to print the board on the console.
         /// </summary>
-        public Gameboard(int width, int height)
+        public OLDGameboard(int width, int height)
         {
             this.boardWidth = width;
             this.boardHeight = height;
@@ -78,7 +78,7 @@ namespace PoppingBaloons
             }
 
             this.PrintArray();
-        }
+        }        
 
         public int BoardWidth { get; protected set; }
 
@@ -212,25 +212,25 @@ namespace PoppingBaloons
         /// </summary>
         public void PrintArray()
         {
-            Console.WriteLine("    0 1 2 3 4 5 6 7 8 9");
-            Console.WriteLine("    --------------------");
-            for (int i = 0; i < boardWidth; i++)
-            {
-                Console.Write(i.ToString() + " | ");
-                for (int j = 0; j < boardHeight; j++)
-                {
-                    int baloonNumber = this.boardContents[i, j];
-                    this.SwitchConsoleColor(baloonNumber);
-                    char currentChar = this.GetBaloonChar(baloonNumber);
-                    Console.Write(currentChar + " ");
-                }
+            //Console.WriteLine("    0 1 2 3 4 5 6 7 8 9");
+            //Console.WriteLine("    --------------------");
+            //for (int i = 0; i < boardWidth; i++)
+            //{
+            //    Console.Write(i.ToString() + " | ");
+            //    for (int j = 0; j < boardHeight; j++)
+            //    {
+            //        int baloonNumber = this.boardContents[i, j];
+            //        this.SwitchConsoleColor(baloonNumber);
+            //        char currentChar = this.GetBaloonChar(baloonNumber);
+            //        Console.Write(currentChar + " ");
+            //    }
 
-                Console.ResetColor();
-                Console.WriteLine("| ");
-            }
+            //    Console.ResetColor();
+            //    Console.WriteLine("| ");
+            //}
 
-            Console.WriteLine("    --------------------");
-            Console.WriteLine("Insert row and column or other command");
+            //Console.WriteLine("    --------------------");
+            //Console.WriteLine("Insert row and column or other command");
         }
 
         /// <summary>
