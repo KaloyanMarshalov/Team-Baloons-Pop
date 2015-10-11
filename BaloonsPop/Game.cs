@@ -15,6 +15,7 @@ namespace PoppingBaloons
     using System.Text;
 
     using PoppingBaloons.Board;
+    using PoppingBaloons.Board.Strategies;
     using Interfaces;
     using Scores;
 
@@ -50,7 +51,7 @@ namespace PoppingBaloons
         /// <param name="renderer">The interface the constructor demands on instatiation.</param>
         public Game(int boardWidth, int boardHeight, IRenderer renderer)
         {
-            this.gameBoard = new Gameboard(boardWidth, boardHeight);
+            this.gameBoard = new Gameboard(boardWidth, boardHeight, new RecursivePopStrategy(), new NormalGravityStrategy());
             this.score = new Score("anon", 0);
             this.renderer = renderer;
         }
@@ -169,8 +170,10 @@ namespace PoppingBaloons
             }
             else
             {
+                int scoreFromMove;
+                scoreFromMove = this.gameBoard.PopBaloon(row, column);
+
                 ////if this turn ends the game, try to update the scoreboard
-                endOfTheGame = this.gameBoard.PopBaloon(row + 1, column + 1);
             }
 
             if (endOfTheGame)
