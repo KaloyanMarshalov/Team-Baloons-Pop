@@ -161,7 +161,7 @@ namespace PoppingBaloons.Renderers
 
             listOfCommands.Add("List of Commands");
             listOfCommands.Add("---------------------------------------");
-            //listOfCommands.Add("* Use 'top' to view the top scoreboard!");
+            ////listOfCommands.Add("* Use 'top' to view the top scoreboard!");
             listOfCommands.Add("* Use 'restart' to start a new game!");
             listOfCommands.Add("* Use 'exit' to quit the game!\n");
 

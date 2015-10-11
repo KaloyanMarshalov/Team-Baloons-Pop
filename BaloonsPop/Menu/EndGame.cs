@@ -1,8 +1,25 @@
-﻿namespace PoppingBaloons.Menu
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="EndGame.cs" company="Team-Baloon-Pop">
+//   Team-Baloon-Pop
+// </copyright>
+// <summary>
+//   A class that implements the logic of ending the game.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace PoppingBaloons.Menu
 {
     using System;
     using System.Linq;
 
+    /// <summary>
+    /// A class that implements the logic of ending the game.
+    /// <list type="bullet">
+    /// <item> 
+    /// <description><see cref="QuitGame"/></description> 
+    /// </item>
+    /// </list> 
+    /// </summary>
     public class EndGame
     {
         private const string StartGameMarked = "> START GAME <\n";
@@ -10,6 +27,9 @@
         private const string QuitGameMarked = "> QUIT GAME <";
         private const string QuitGameUnMarked = "  QUIT GAME";
 
+        /// <summary>
+        /// A method used for ending the game.
+        /// </summary>
         public static void QuitGame()
         {
             Console.Clear();

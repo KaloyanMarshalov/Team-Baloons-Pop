@@ -14,12 +14,38 @@ namespace PoppingBaloons
     using PoppingBaloons.Interfaces;
     using PoppingBaloons.Scores;
 
+    /// <summary>
+    /// The main class used to execute the whole code.
+    /// <list type="bullet">
+    /// <item> 
+    /// <description><see cref="Game"/></description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="Start"/></description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="ParseCommand"/></description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="SendCommand"/></description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="Restart"/></description> 
+    /// </item>
+    /// </list> 
+    /// </summary>
     public class Game
     {
         private readonly Score score;
         private readonly IRenderer renderer;
         private readonly Gameboard gameBoard;
 
+        /// <summary>
+        /// A constructor for the class.
+        /// </summary>
+        /// <param name="boardWidth">The board width the constructor uses.</param>
+        /// <param name="boardHeight">The board height the constructor uses.</param>
+        /// <param name="renderer">The interface passed to the constructor.</param>
         public Game(int boardWidth, int boardHeight, IRenderer renderer)
         {
             this.gameBoard = new Gameboard(boardWidth, boardHeight, new RecursivePopStrategy(), new NormalGravityStrategy());
@@ -27,13 +53,16 @@ namespace PoppingBaloons
             this.renderer = renderer;
         }
 
+        /// <summary>
+        /// A method used for starting the game.
+        /// </summary>
         public void Start()
         {
             while (true)
             {
-                renderer.ClearScreen();
-                renderer.RenderMessage(string.Format("Score: {0}", this.score.Points));
-                renderer.RenderGameboard(gameBoard);
+                this.renderer.ClearScreen();
+                this.renderer.RenderMessage(string.Format("Score: {0}", this.score.Points));
+                this.renderer.RenderGameboard(this.gameBoard);
                 this.ParseCommand(Console.ReadLine());
             }
         }
@@ -68,7 +97,8 @@ namespace PoppingBaloons
                         Console.Clear();
                         this.Restart();
                         break;
-                    //case "top":
+
+                    ////case "top":
                     //    this.DisplayScoreboard();
                     //    break;
                     case "exit":
@@ -94,7 +124,7 @@ namespace PoppingBaloons
         }
 
         /// <summary>
-        /// A method used for making a new instance of the <see cref="BaloonsState()"/> method.
+        /// A method that restarts the game.
         /// </summary>
         private void Restart()
         {

@@ -6,6 +6,7 @@
 //   The main class used to execute the whole code.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+
 namespace PoppingBaloons
 {
     using Renderers;
@@ -21,7 +22,7 @@ namespace PoppingBaloons
     public class Entry
     {
         /// <summary>
-        /// The main method that invokes <see cref="StartGame"/> method.
+        /// The main method starts the game.
         /// </summary>
         public static void Main()
         {

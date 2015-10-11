@@ -1,4 +1,4 @@
-# Refactoring documentation of balloons pop project
+# Refactoring documentation of Baloons Pop project
 
 ## Member renaming
 1. Project
