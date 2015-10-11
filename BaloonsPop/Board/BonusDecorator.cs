@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PoppingBaloons.Board
+﻿namespace PoppingBaloons.Board
 {
     class BonusDecorator: BoardComponentDecorator
     {

@@ -1,4 +1,4 @@
-﻿namespace PoppingBaloons.Board
+﻿namespace PoppingBaloons.Board.BalloonFactory
 {
     using System;       
     using System.Linq;     

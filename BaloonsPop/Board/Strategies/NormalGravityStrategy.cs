@@ -1,8 +1,7 @@
-﻿using System;
-
-namespace PoppingBaloons.Board.Strategies
+﻿namespace PoppingBaloons.Board.Strategies
 {
     using System.Collections.Generic;
+    using PoppingBaloons.Board.BalloonFactory;
 
     class NormalGravityStrategy : GravityStrategy
     {

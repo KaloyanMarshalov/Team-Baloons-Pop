@@ -6,7 +6,6 @@
 //   The main class used to execute the whole code.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace PoppingBaloons
 {
     using Renderers;

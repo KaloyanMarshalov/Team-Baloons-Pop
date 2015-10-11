@@ -9,19 +9,10 @@
 namespace PoppingBaloons.Renderers
 {
     using System;
-
     using System.Collections.Generic;
     using PoppingBaloons.Board;
     using PoppingBaloons.Interfaces;
-
-    /// <summary>
-    /// Sealed class used for logging various messages on the console:
-    /// <list type="bullet">
-    /// <item> 
-    /// <description><see cref="Log"/></description> 
-    /// </item>
-    /// </list> 
-    /// </summary>
+    
     public sealed class ConsoleRenderer : IRenderer
     {
         private static readonly object syncLock = new object();

@@ -6,15 +6,13 @@
 //   A class that watches for a change in state of the baloons.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace PoppingBaloons
 {
     using System;
-
     using PoppingBaloons.Board;
     using PoppingBaloons.Board.Strategies;
-    using Interfaces;
-    using Scores;
+    using PoppingBaloons.Interfaces;
+    using PoppingBaloons.Scores;
 
     /// <summary>
     /// A class that displays and updates the scores on the console:
@@ -149,9 +147,9 @@ namespace PoppingBaloons
         /// <summary>
         /// A method used for making a new instance of the <see cref="BaloonsState()"/> method.
         /// </summary>
-        private void Restart()
-        {
-            this.Start();
-        }
+        //private void Restart()
+        //{
+        //    this.Start();
+        //}
     }
 }

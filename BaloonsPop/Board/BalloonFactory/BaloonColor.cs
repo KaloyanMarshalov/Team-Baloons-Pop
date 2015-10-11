@@ -1,4 +1,4 @@
-﻿namespace PoppingBaloons.Board
+﻿namespace PoppingBaloons.Board.BalloonFactory
 {
     public enum BaloonColor
     {
