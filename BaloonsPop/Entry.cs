@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MainMenu.cs" company="Team-Baloon-Pop">
+// <copyright file="Entry.cs" company="Team-Baloon-Pop">
 //   Team-Baloon-Pop
 // </copyright>
 // <summary>
@@ -12,15 +12,7 @@ namespace PoppingBaloons
     
     /// <summary>
     /// The main class used to execute the whole code:
-    /// <list type="bullet">
-    /// <item> 
-    /// <description><see cref="Main"/></description> 
-    /// </item>
-    /// <item> 
-    /// <description><see cref="StartMenu"/></description> 
-    /// </item>
-    /// </list> 
-    /// </summary>
+    /// <list type="bullet">    
     public class Entry
     {
         /// <summary>

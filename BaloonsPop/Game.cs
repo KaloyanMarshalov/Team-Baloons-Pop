@@ -13,37 +13,13 @@ namespace PoppingBaloons
     using PoppingBaloons.Board.Strategies;
     using PoppingBaloons.Interfaces;
     using PoppingBaloons.Scores;
-
-    /// <summary>
-    /// A class that displays and updates the scores on the console:
-    /// <list type="bullet">
-    /// <item> 
-    /// <description><see cref="DisplayScoreboard"/>,</description> 
-    /// </item>
-    /// <item> 
-    /// <description><see cref="ParseCommand"/>,</description> 
-    /// </item>
-    /// <item> 
-    /// <description><see cref="SendCommand"/>,</description> 
-    /// </item>
-    /// <item> 
-    /// <description><see cref="UpdateScoreboard"/>,</description> 
-    /// </item>
-    /// <item> 
-    /// <description><see cref="Restart"/>,</description> 
-    /// </item>
-    /// </list> 
-    /// </summary>
+    
     public class Game
     {
         private readonly Score score;
         private readonly IRenderer renderer;
         private Gameboard gameBoard;
-
-        /// <summary>
-        /// A constructor used for instantiating the class.
-        /// </summary>
-        /// <param name="renderer">The interface the constructor demands on instatiation.</param>
+                
         public Game(int boardWidth, int boardHeight, IRenderer renderer)
         {
             this.gameBoard = new Gameboard(boardWidth, boardHeight, new RecursivePopStrategy(), new NormalGravityStrategy());

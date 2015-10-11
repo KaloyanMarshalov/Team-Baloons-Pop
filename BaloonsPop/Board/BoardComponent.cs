@@ -1,6 +1,5 @@
 ﻿namespace PoppingBaloons.Board
 {
-    using PoppingBaloons.Interfaces;
 
     public abstract class BoardComponent
     {

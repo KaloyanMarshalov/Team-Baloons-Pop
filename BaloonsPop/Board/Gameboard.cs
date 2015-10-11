@@ -31,7 +31,7 @@ namespace PoppingBaloons.Board
         public int BoardHeight { get; protected set; }
 
         /// <summary>
-        /// This Method fills the board with balloons with random colors
+        /// This Method fills the board with balloons of random color
         /// </summary>
         public void GetBalloonsOnBoard()
         {
