@@ -29,9 +29,6 @@ namespace PoppingBaloons
     /// <item> 
     /// <description><see cref="SendCommand"/></description> 
     /// </item>
-    /// <item> 
-    /// <description><see cref="Restart"/></description> 
-    /// </item>
     /// </list> 
     /// </summary>
     public class Game
