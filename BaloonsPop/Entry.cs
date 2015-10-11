@@ -21,7 +21,7 @@ namespace PoppingBaloons
         public static void Main()
         {
             ConsoleRenderer consoleRenderer = ConsoleRenderer.LoggerInstance;
-            Game game = new Game(10, 6, consoleRenderer);
+            Game game = new Game(10, 5, consoleRenderer);
             game.Start();
         }
     }

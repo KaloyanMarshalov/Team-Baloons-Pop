@@ -1,14 +1,14 @@
 # Refactoring documentation of balloons pop project
 
 ## Member renaming
-* Project
+1. Project
   * Solution ingr_baloni => BaloonsPopGame  
   * folder Baloons-Pop-1 => BaloonsPop
   * file and class baloonsState => BaloonsState
   * file ingra_baloni.csproj => BaloonsPop.csproj 
   * class GameState => Game
 
-* file Game.cs
+2. file Game.cs
   * method displayScoreboard => DisplayScoreboard 
   * variable s => command
   * method executeCommand => ParseCommand
@@ -23,12 +23,12 @@
 	* a => scoresOfPlayer
 	* magic number 5 => variable int maxPlayersInHighScores
 
-* file GameState.cs
+3. file GameState.cs
   * variable cnt => turnCounter
   * variable __st => private state
   * scoreboard => highScores 
  
-* file BaloonsState.cs
+4. file BaloonsState.cs
   * variable poleto => playField
   * variable rnd => randomGenerator
   * variable state => currentCell
@@ -37,12 +37,16 @@
   * method printArray => PrintArray  
   * method pr => GetBaloonChar
   
-* file Program.cs => MainMenu.cs
+5. file Program.cs => MainMenu.cs
  * Added Logo using strings
  * Added method StartMenu
  
-* file ListOfCommands.cs
+6. file ListOfCommands.cs
   *method PrintListOFCommands
+  
+7. Files HighScore.cs, Score.cs and ScoreComparer.cs extracted from Game.cs
+
+8. File Entry.cs extracted from Game.cs
 
 ## Structure refactorings
 
@@ -64,6 +68,13 @@
 * Removed unnecessary comments in Program.cs
 * Fixed bug in Game.cs that caused the game to end after each turn (missing round brackets around an if statement)
 * DisplayScoreboard method in Game.cs uses StringBuilder and returns a string to improve testability
+* Introduced constants:
+  Score\MinimumPlayerNameLength
+  Score\MaximumPlayerNameLength
+  Score\NameErrorStringFormat
+  HighScore\MaxScoreCount
+  HighScore\NullableScoreExMessage
+  HighScore\EmptyScoreBoard
 
 ## Unit Tests
 
