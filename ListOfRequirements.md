@@ -46,10 +46,11 @@
 
 ## 4. Implement unit tests:
 
-	* The code coverage of the unit tests should be at least 90% - nope
+	* The code coverage of the unit tests should be at least 90% - no;
 	
-	* At least 10 of your tests should use mocking (Moq, JustMock or other) - nope
+	* At least 10 of your tests should use mocking (Moq, JustMock or other) - no;
 	
 ## 5. Documentation and comments - done;
 
 ## 6. Add new functionalities
+	* Added Game Menu, which can control the states of the game :)
