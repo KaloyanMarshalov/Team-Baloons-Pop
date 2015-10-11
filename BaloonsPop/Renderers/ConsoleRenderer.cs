@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ConsoleLogger.cs" company="Team-Baloon-Pop">
+// <copyright file="ConsoleRenderer.cs" company="Team-Baloon-Pop">
 //   Team-Baloon-Pop
 // </copyright>
 // <summary>
-//   A class that watches for a change in state of the baloons.
+//   A class that draws the gameboard on the console.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 namespace PoppingBaloons.Renderers
@@ -12,26 +12,87 @@ namespace PoppingBaloons.Renderers
     using System.Collections.Generic;
     using PoppingBaloons.Board;
     using PoppingBaloons.Interfaces;
-    
+
+    /// <summary>
+    /// A class that draws the gameboard on the console.
+    /// <list type="bullet">
+    /// <item> 
+    /// <description><see cref="ClearScreen"/></description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="RenderGameboard"/></description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="RenderMessage"/></description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="SwitchConsoleColor"/></description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="PrintListOfCommands"/></description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="LoggerInstance"/></description> 
+    /// </item>
+    /// </list> 
+    /// </summary>
     public sealed class ConsoleRenderer : IRenderer
     {
-        private static readonly object syncLock = new object();
+        private static readonly object SyncLock = new object();
         private static volatile ConsoleRenderer loggerInstance;
 
+        /// <summary>
+        /// An empty constructor for the class.
+        /// </summary>
         private ConsoleRenderer()
         {
         }
 
+        /// <summary>
+        /// Gets or sets an instance of the class. It checks if an instance of this class is already
+        /// available. Implementation of the Singleton Pattern.
+        /// </summary>
+        /// <returns>Returns a new instance if none has been instantiated.</returns>
+        public static ConsoleRenderer LoggerInstance
+        {
+            get
+            {
+                if (loggerInstance == null)
+                {
+                    lock (SyncLock)
+                    {
+                        if (loggerInstance == null)
+                        {
+                            loggerInstance = new ConsoleRenderer();
+                        }
+                    }
+                }
+
+                return loggerInstance;
+            }
+        }
+
+        /// <summary>
+        /// A method used for printing messages on the console.
+        /// </summary>
+        /// <param name="message">The string the method is called upon.</param>
         public void RenderMessage(string message)
         {
             Console.WriteLine(message);
         }
 
+        /// <summary>
+        /// A method that clears the console.
+        /// </summary>
         public void ClearScreen()
         {
             Console.Clear();
         }
 
+        /// <summary>
+        /// A method used for drawing the gameboard on the console.
+        /// </summary>
+        /// <param name="gameboard">The instance of the Gameboard the method is called upon.</param>
         public void RenderGameboard(Gameboard gameboard)
         {
             Console.WriteLine("    0 1 2 3 4 5 6 7 8 9");
@@ -65,29 +126,10 @@ namespace PoppingBaloons.Renderers
         }
 
         /// <summary>
-        /// A static method used for checking if an instance of this class is already
-        /// available. Implementation of the Singleton Pattern.
+        /// A method that changes the console foreground color depending on the string
+        /// passed to the method.
         /// </summary>
-        /// <returns>The method returns a new instance if none has been instantiated.</returns>
-        public static ConsoleRenderer LoggerInstance
-        {
-            get
-            {
-                if (loggerInstance == null)
-                {
-                    lock (syncLock)
-                    {
-                        if (loggerInstance == null)
-                        {
-                            loggerInstance = new ConsoleRenderer();
-                        }
-                    }
-                }
-
-                return loggerInstance;
-            }
-        }
-
+        /// <param name="baloonColor">The string the method is called upon.</param>
         private void SwitchConsoleColor(string baloonColor)
         {
             switch (baloonColor)
@@ -110,6 +152,9 @@ namespace PoppingBaloons.Renderers
             }
         }        
 
+        /// <summary>
+        /// A method used for printing the commands on the console.
+        /// </summary>
         private void PrintListOfCommands()
         {
             var listOfCommands = new List<string>();

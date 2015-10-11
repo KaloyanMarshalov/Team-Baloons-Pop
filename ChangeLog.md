@@ -62,6 +62,11 @@
 * Introduced variables minBaloon and maxBallon in BaloonState.cs
 * Created a method SwitchConsoleColor
 * Exported constants in HighScore.cs
+* Implemented Strategy Pattern in PopStrategy, RecursivePopStratgy for finding popped baloons. And
+  in GravityStrategy, NormalPopStrategy for placing baloons in the empty space below them.
+* Singleton Pattern is implemented in ConsoleRenderer.cs where by using locking and a check, only one instance of the class is created.
+* Simple Factory Pattern - is implemented in Balloon.cs, BalloonMaker.cs. It makes different colors of balloons!
+* Decorator Patternattern - Implemented in BoardComponentDecorator and BonusDecorator for setting new components.
 
 ## Other refactorings
 

@@ -9,14 +9,20 @@
 namespace PoppingBaloons
 {
     using Renderers;
-    
+
     /// <summary>
-    /// The main class used to execute the whole code:
-    /// <list type="bullet">    
+    /// The main class used to execute the whole code.
+    /// <list type="bullet">
+    /// <item> 
+    /// <description><see cref="Main"/></description> 
+    /// </item>
+    /// </list> 
+    /// </summary>
     public class Entry
     {
         /// <summary>
-        /// The main method that invokes <see cref="StartMenu"/> method.
+        /// The main method makes a new instance of the <see cref="Renderers.ConsoleRenderer"/>. And a new
+        /// instance of the <see cref="Game"/> class.
         /// </summary>
         public static void Main()
         {

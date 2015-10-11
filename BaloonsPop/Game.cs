@@ -13,53 +13,56 @@ namespace PoppingBaloons
     using PoppingBaloons.Board.Strategies;
     using PoppingBaloons.Interfaces;
     using PoppingBaloons.Scores;
-    
+
+    /// <summary>
+    /// The main class used to execute the whole code.
+    /// <list type="bullet">
+    /// <item> 
+    /// <description><see cref="Game"/></description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="Start"/></description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="ParseCommand"/></description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="SendCommand"/></description> 
+    /// </item>
+    /// <item> 
+    /// <description><see cref="Restart"/></description> 
+    /// </item>
+    /// </list> 
+    /// </summary>
     public class Game
     {
         private readonly Score score;
         private readonly IRenderer renderer;
         private readonly Gameboard gameBoard;
-                
+
+        /// <summary>
+        /// A constructor for the class.
+        /// </summary>
+        /// <param name="boardWidth">The board width the constructor uses.</param>
+        /// <param name="boardHeight">The board height the constructor uses.</param>
+        /// <param name="renderer">The interface passed to the constructor.</param>
         public Game(int boardWidth, int boardHeight, IRenderer renderer)
         {
             this.gameBoard = new Gameboard(boardWidth, boardHeight, new RecursivePopStrategy(), new NormalGravityStrategy());
             this.score = new Score("anonimous", 0);
             this.renderer = renderer;
         }
-
+        
         /// <summary>
-        /// A method that is used to display the score in the form of text.
+        /// A method used for starting the game.
         /// </summary>
-        /// <returns>The method returns a string.</returns>
-        //public string DisplayScoreboard()
-        //{
-        //    ListOfCommands.PrintListOFCommands();
-        //    StringBuilder stringBuilder = new StringBuilder();
-
-        //    if (this.score.Count == 0)
-        //    {
-        //        stringBuilder.AppendLine("The scoreboard is empty");
-        //    }
-        //    else
-        //    {
-        //        stringBuilder.AppendLine("Top performers:");
-
-        //        foreach (Tuple<string, int> score in this.score)
-        //        {
-        //            stringBuilder.AppendLine(score.Item1 + "  " + score.Item2 + " turns ");
-        //        }
-        //    }
-
-        //    return stringBuilder.ToString();
-        //}
-
         public void Start()
         {
             while (true)
             {
-                renderer.ClearScreen();
-                renderer.RenderMessage(string.Format("Score: {0}", this.score.Points));
-                renderer.RenderGameboard(gameBoard);
+                this.renderer.ClearScreen();
+                this.renderer.RenderMessage(string.Format("Score: {0}", this.score.Points));
+                this.renderer.RenderGameboard(this.gameBoard);
                 this.ParseCommand(Console.ReadLine());
             }
         }
@@ -84,29 +87,6 @@ namespace PoppingBaloons
 
                 this.SendCommand(row, col);
             }
-            //else if (commands.Length == 1)
-            //{
-            //    string currentCommand = commands[0];
-
-            //    switch (currentCommand)
-            //    {
-            //        case "restart":
-            //            Console.Clear();
-            //            this.Restart();
-            //            break;
-            //        case "top":
-            //            //this.DisplayScoreboard();
-            //            break;
-            //        case "exit":
-            //            //this.renderer.LogMessage("Thanks for playing!!!");
-            //            Environment.Exit(0);
-            //            break;
-            //        default:
-            //            //ListOfCommands.PrintListOfCommands();
-            //            //this.renderer.LogMessage("Unknown command");
-            //            break;
-            //    }
-            //}
         }
 
         /// <summary>
@@ -119,14 +99,14 @@ namespace PoppingBaloons
         private void SendCommand(int row, int column)
         {
             this.score.Points += this.gameBoard.PopBaloon(row, column);            
-        }        
+        }
 
         /// <summary>
-        /// A method used for making a new instance of the <see cref="BaloonsState()"/> method.
+        /// A method that restarts the game.
         /// </summary>
-        //private void Restart()
-        //{
-        //    this.Start();
-        //}
+        private void Restart()
+        {
+            this.Start();
+        }
     }
 }

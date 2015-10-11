@@ -26,14 +26,15 @@
 	
 ## 2. Implement design patterns:
 	### Creational patterns:
-		* Singleton Pattern - Renderers is the directory in ConsoleRenderer.cs where the creational pattern Singleton is implemented.
+		* Singleton Pattern - implemented in ConsoleRenderer.cs where by using locking and a check, only one instance of the class is created.
 		* Simple Factory Pattern - BaoonFactory is the directory where the creational pattern Simle Factory is implemented. It makes different colors of balloons!
 		
 	### Structural patterns:
-		* Decorator Patternattern -
+		* Decorator Patternattern - Implemented in BoardComponentDecorator and BonusDecorator for setting new components.
 
 	### Behavior patterns:
-		* Strategy Pattern -
+		* Strategy Pattern - Implemented in PopStrategy, RecursivePopStratgy for finding popped baloons. And
+		in GravityStrategy, NormalPopStrategy for placing baloons in the empty space below them.
 		
 ## 3. SOLID and DRY principles:
 	* Single responsibility - done;
