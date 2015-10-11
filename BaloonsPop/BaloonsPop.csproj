@@ -53,8 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Board\BlueBalloon.cs" />
-    <Compile Include="Board\PopStrategies\PopStrategy.cs" />
-    <Compile Include="Board\PopStrategies\RecursivePopStrategy.cs" />
+    <Compile Include="Board\Strategies\GravityStrategy.cs" />
+    <Compile Include="Board\Strategies\NormalGravityStrategy.cs" />
+    <Compile Include="Board\Strategies\PopStrategy.cs" />
+    <Compile Include="Board\Strategies\RecursivePopStrategy.cs" />
     <Compile Include="Renderers\ConsoleRenderer.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Board\RedBalloon.cs" />

@@ -12,7 +12,7 @@ namespace PoppingBaloons.Board
     using System;
     using System.Linq;
 
-    using PopStrategies;
+    using Strategies;
 
     /// <summary>
     /// A class that watches for the game development, drawing the game board
@@ -61,12 +61,13 @@ namespace PoppingBaloons.Board
         /// This method randomly generates the position of the player on the game board
         /// and uses <see cref="PrintArray"/> method to print the board on the console.
         /// </summary>
-        public Gameboard(int boardWidth, int boardHeight, PopStrategy strategy)
+        public Gameboard(int boardWidth, int boardHeight, PopStrategy popStrategy, GravityStrategy gravityStrategy)
         {
             this.BoardWidth = boardWidth;
             this.BoardHeight = boardHeight;
             this.contents = new BoardComponent[this.BoardHeight, this.BoardWidth];
-            this.PopStrategy = strategy;
+            this.PopStrategy = popStrategy;
+            this.GravityStrategy = gravityStrategy;
 
             this.randomGenerator = new Random();
 
@@ -94,6 +95,8 @@ namespace PoppingBaloons.Board
 
         public PopStrategy PopStrategy { get; set; }
 
+        public GravityStrategy GravityStrategy { get; set; }
+
         /// <summary>
         /// This method accepts two integer parameters and uses them to find where on the field is 
         /// the player. Depending on that tha game contimues or is over.
@@ -104,6 +107,7 @@ namespace PoppingBaloons.Board
         public int PopBaloon(int x, int y)
         {
             this.PopStrategy.PopBalloons(x, y, this);
+            this.GravityStrategy.Apply(this);
 
             //////changes the game state and returns boolean,indicating wheater the game is over
             //if (!this.contents[x - 1, y - 1].IsActive)
@@ -215,6 +219,11 @@ namespace PoppingBaloons.Board
         public BoardComponent GetElement(int row, int col)
         {
             return this.contents[row, col];
+        }
+
+        public void SetElement(int row, int col, BoardComponent component)
+        {
+            this.contents[row, col] = component;
         }
     } 
 }

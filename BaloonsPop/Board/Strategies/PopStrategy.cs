@@ -1,4 +1,4 @@
-﻿namespace PoppingBaloons.Board.PopStrategies
+﻿namespace PoppingBaloons.Board.Strategies
 {
     public abstract class PopStrategy
     {
