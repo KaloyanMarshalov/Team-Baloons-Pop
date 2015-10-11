@@ -52,7 +52,7 @@ namespace PoppingBaloons
             this.score = new Score("anonimous", 0);
             this.renderer = renderer;
         }
-        
+
         /// <summary>
         /// A method used for starting the game.
         /// </summary>
@@ -98,15 +98,7 @@ namespace PoppingBaloons
         /// <param name="column">The integer the method is called upon.</param>
         private void SendCommand(int row, int column)
         {
-            this.score.Points += this.gameBoard.PopBaloon(row, column);            
-        }
-
-        /// <summary>
-        /// A method that restarts the game.
-        /// </summary>
-        private void Restart()
-        {
-            this.Start();
+            this.score.Points += this.gameBoard.PopBaloon(row, column);
         }
     }
 }
