@@ -5,22 +5,38 @@
 
     public class BalloonMaker
     {
+        private int balloonsCreated;
+        private const float BonusBalloonProbailityInPercent = 10;
+
         public Balloon MakeBalloon(BaloonColor colorOfBalloon) 
         {
+            Balloon newBalloon;
+            this.balloonsCreated++;
+
             switch (colorOfBalloon)
             {
                 case BaloonColor.Blue: 
-                    return new Balloon("blue"); 
+                    newBalloon = new Balloon("blue");
+                    break;
                 case BaloonColor.Green:
-                    return new Balloon("green");
+                    newBalloon = new Balloon("green");
+                    break;
                 case BaloonColor.Red:
-                    return new Balloon("red");
+                    newBalloon = new Balloon("red");
+                    break;
                 case BaloonColor.Yellow:
-                    return new Balloon("yellow");                 
+                    newBalloon = new Balloon("yellow");
+                    break;
                 default:
                     throw new ArgumentException();
             }
 
+            if (balloonsCreated % BonusBalloonProbailityInPercent == 0)
+            {
+                return newBalloon;
+            }
+
+            return newBalloon;
         }
     }
 }
