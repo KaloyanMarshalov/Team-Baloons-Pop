@@ -68,6 +68,7 @@ namespace PoppingBaloons.Board
             GetBalloonsOnBoard();
             this.PopStrategy = popStrategy;
             this.GravityStrategy = gravityStrategy;
+        }
 
         public int BoardWidth { get; protected set; }
 

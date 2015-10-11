@@ -30,7 +30,8 @@ namespace PoppingBaloons.Board.Strategies
                     }
                     else
                     {
-                        BoardComponent poppedBalloon = new RedBalloon();
+                        BalloonMaker balloonMaker = new BalloonMaker();
+                        BoardComponent poppedBalloon = balloonMaker.MakeBalloon(BaloonColor.Red);
                         poppedBalloon.IsActive = false;
 
                         board.SetElement(row, col, poppedBalloon);
