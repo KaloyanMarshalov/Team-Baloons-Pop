@@ -34,7 +34,7 @@
             Score score = new Score("Player", 100);
             highScore.AddScore(score);
             
-            string expected = "Top performers:\r\nPlayer 100\r\n";
+            string expected = "Top performers: \r\nPlayer 100\r\n";
             string actual = highScore.ToString();
 
             Assert.AreEqual(expected, actual);
@@ -53,7 +53,7 @@
                 highScore.AddScore(score);
             }
 
-            string expected = "Top performers:\r\nPlayer 3 300\r\nPlayer 2 200\r\nPlayer 1 100\r\n";
+            string expected = "Top performers: \r\nPlayer 3 300\r\nPlayer 2 200\r\nPlayer 1 100\r\n";
             string actual = highScore.ToString();
 
             Assert.AreEqual(expected, actual);
@@ -72,7 +72,7 @@
                 highScore.AddScore(score);
             }
 
-            string expected = "Top performers:\r\nPlayer 6 600\r\nPlayer 5 500\r\nPlayer 4 400\r\nPlayer 3 300\r\nPlayer 2 200\r\n";
+            string expected = "Top performers: \r\nPlayer 6 600\r\nPlayer 5 500\r\nPlayer 4 400\r\nPlayer 3 300\r\nPlayer 2 200\r\n";
             string actual = highScore.ToString();
 
             Assert.AreEqual(expected, actual);
@@ -91,7 +91,7 @@
                 highScore.AddScore(score);
             }
 
-            string expected = "Top performers:\r\nPlayer 6 600\r\nPlayer 5 500\r\nPlayer 4 400\r\nPlayer 3 300\r\nPlayer 2 200\r\n";
+            string expected = "Top performers: \r\nPlayer 6 600\r\nPlayer 5 500\r\nPlayer 4 400\r\nPlayer 3 300\r\nPlayer 2 200\r\n";
             string actual = highScore.ToString();
 
             Assert.AreEqual(expected, actual);
@@ -109,7 +109,7 @@
             highScore.AddScore(new Score("Galq Georgieva", 50));
             highScore.AddScore(new Score("Ivanka Ivanova", 1750));
 
-            string expected = "Top performers:\r\nMaria Petrova 10200\r\nGeorgi Georgiev 3600\r\nIvanka Ivanova 1750\r\nIvan Ivanov 1200\r\nPetar Petrov 200\r\n";
+            string expected = "Top performers: \r\nMaria Petrova 10200\r\nGeorgi Georgiev 3600\r\nIvanka Ivanova 1750\r\nIvan Ivanov 1200\r\nPetar Petrov 200\r\n";
             string actual = highScore.ToString();
 
             Assert.AreEqual(expected, actual);
