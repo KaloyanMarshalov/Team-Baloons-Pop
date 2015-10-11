@@ -4,8 +4,7 @@
     using System.Linq;
 
     public class GameMenu
-    {
-
+    {              
         private const string StartGameMarked = "> START GAME <\n";
         private const string StartGameUnMarked = "  START GAME\n";
         private const string QuitGameMarked = "> QUIT GAME <";
