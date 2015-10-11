@@ -1,7 +1,7 @@
 ﻿namespace PoppingBaloons.Board.PopStrategies
 {
-    abstract class PopStrategy
+    public abstract class PopStrategy
     {
-        public abstract int PopBalloons(int row, int col);
+        public abstract int PopBalloons(int row, int col, Gameboard board);
     }
 }

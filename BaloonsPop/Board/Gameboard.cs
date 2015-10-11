@@ -12,6 +12,8 @@ namespace PoppingBaloons.Board
     using System;
     using System.Linq;
 
+    using PopStrategies;
+
     /// <summary>
     /// A class that watches for the game development, drawing the game board
     /// on the console and stopping the game using the following methods: 
@@ -59,11 +61,12 @@ namespace PoppingBaloons.Board
         /// This method randomly generates the position of the player on the game board
         /// and uses <see cref="PrintArray"/> method to print the board on the console.
         /// </summary>
-        public Gameboard(int boardWidth, int boardHeight)
+        public Gameboard(int boardWidth, int boardHeight, PopStrategy strategy)
         {
             this.BoardWidth = boardWidth;
             this.BoardHeight = boardHeight;
             this.contents = new BoardComponent[this.BoardHeight, this.BoardWidth];
+            this.PopStrategy = strategy;
 
             this.randomGenerator = new Random();
 
@@ -87,7 +90,9 @@ namespace PoppingBaloons.Board
 
         public int BoardWidth { get; protected set; }
 
-        public int BoardHeight { get; protected set; }        
+        public int BoardHeight { get; protected set; }
+
+        public PopStrategy PopStrategy { get; set; }
 
         /// <summary>
         /// This method accepts two integer parameters and uses them to find where on the field is 
@@ -98,6 +103,8 @@ namespace PoppingBaloons.Board
         /// <returns>The method returns a boolean, which indicates wheather the game is over.</returns>
         public int PopBaloon(int x, int y)
         {
+            this.PopStrategy.PopBalloons(x, y, this);
+
             ////changes the game state and returns boolean,indicating wheater the game is over
             if (!this.contents[x - 1, y - 1].IsActive)
             {
