@@ -21,11 +21,7 @@ namespace PoppingBaloons.Menu
     /// </list> 
     /// </summary>
     public class GameMenu
-<<<<<<< HEAD
-    {
-=======
-    {              
->>>>>>> caeeea1af3435f902dd174510db6859d712c58cc
+    {  
         private const string StartGameMarked = "> START GAME <\n";
         private const string StartGameUnMarked = "  START GAME\n";
         private const string QuitGameMarked = "> QUIT GAME <";

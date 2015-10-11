@@ -36,6 +36,9 @@ namespace PoppingBaloons
     /// </summary>
     public class Game
     {
+        private const int BoardWidth = 5;
+        private const int BoardHeight = 10;
+
         private readonly Score score;
         private readonly IRenderer renderer;
         private readonly Gameboard gameBoard;
@@ -85,7 +88,14 @@ namespace PoppingBaloons
                 int.TryParse(commands[0], out row);
                 int.TryParse(commands[1], out col);
 
-                this.SendCommand(row, col);
+                if (row >= BoardWidth || col >= BoardHeight)
+                {
+                    Console.WriteLine("Ivalid coordinates.");
+                }
+                else
+                {
+                    this.SendCommand(row, col);
+                }
             }
             else if (commands.Length == 1)
             {
