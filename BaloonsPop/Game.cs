@@ -171,7 +171,7 @@ namespace PoppingBaloons
             else
             {
                 int scoreFromMove;
-                scoreFromMove = this.gameBoard.PopBaloon(row + 1, column + 1);
+                scoreFromMove = this.gameBoard.PopBaloon(row, column);
 
                 ////if this turn ends the game, try to update the scoreboard
             }

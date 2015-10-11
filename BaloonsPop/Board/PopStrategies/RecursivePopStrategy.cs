@@ -41,7 +41,7 @@
                 }
             }
 
-            if (col - 1 <= 0)
+            if (col - 1 >= 0)
             {
                 var leftCell = board.GetElement(row, col - 1);
 
@@ -51,7 +51,7 @@
                 }
             }
 
-            if (col + 1 > board.BoardWidth)
+            if (col + 1 < board.BoardWidth)
             {
                 var rightCell = board.GetElement(row, col + 1);
 
