@@ -18,7 +18,7 @@ namespace PoppingBaloons
     {
         private readonly Score score;
         private readonly IRenderer renderer;
-        private Gameboard gameBoard;
+        private readonly Gameboard gameBoard;
                 
         public Game(int boardWidth, int boardHeight, IRenderer renderer)
         {
@@ -57,6 +57,8 @@ namespace PoppingBaloons
         {
             while (true)
             {
+                renderer.ClearScreen();
+                renderer.RenderMessage(string.Format("Score: {0}", this.score.Points));
                 renderer.RenderGameboard(gameBoard);
                 this.ParseCommand(Console.ReadLine());
             }
@@ -116,8 +118,7 @@ namespace PoppingBaloons
         /// <param name="column">The integer the method is called upon.</param>
         private void SendCommand(int row, int column)
         {
-            int scoreFromMove;
-            scoreFromMove = this.gameBoard.PopBaloon(row, column);            
+            this.score.Points += this.gameBoard.PopBaloon(row, column);            
         }        
 
         /// <summary>

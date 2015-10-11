@@ -12,7 +12,11 @@ namespace PoppingBaloons.Interfaces
     using PoppingBaloons.Board;
     
     public interface IRenderer
-    {        
+    {
+        void ClearScreen();
+
         void RenderGameboard(Gameboard gameboard);
+
+        void RenderMessage(string score);
     }
 }

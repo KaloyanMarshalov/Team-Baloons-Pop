@@ -27,9 +27,13 @@ namespace PoppingBaloons.Renderers
             Console.WriteLine(message);
         }
 
-        public void RenderGameboard(Gameboard gameboard)
+        public void ClearScreen()
         {
             Console.Clear();
+        }
+
+        public void RenderGameboard(Gameboard gameboard)
+        {
             Console.WriteLine("    0 1 2 3 4 5 6 7 8 9");
             Console.WriteLine("    --------------------");
             for (int i = 0; i < gameboard.BoardHeight; i++)
