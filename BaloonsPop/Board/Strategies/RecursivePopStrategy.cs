@@ -1,22 +1,17 @@
 ﻿namespace PoppingBaloons.Board.Strategies
 {
-    using System;
-
     public class RecursivePopStrategy : PopStrategy
     {
         public override int PopBalloons(int row, int col, Gameboard board)
         {
-            Console.WriteLine("check" + row + " " + col);
             int result = 0;
 
             result += ProcessCell(row, col, board);
-            Console.WriteLine(result);
             return result;
         }
 
         private int ProcessCell(int row, int col, Gameboard board)
         {
-            Console.WriteLine("Processing r{0}c{1}", row, col);
             var currentCell = board.GetElement(row, col);
             var subresult = 0;
             

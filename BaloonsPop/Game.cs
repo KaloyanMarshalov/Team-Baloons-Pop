@@ -86,7 +86,7 @@ namespace PoppingBaloons
         {
             while (true)
             {
-                //Console.Clear();
+                Console.Clear();
                 renderer.RenderGameboard(gameBoard);
                 this.ParseCommand(Console.ReadLine());
             }

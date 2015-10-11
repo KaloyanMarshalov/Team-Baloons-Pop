@@ -106,116 +106,12 @@ namespace PoppingBaloons.Board
         /// <returns>The method returns a boolean, which indicates wheather the game is over.</returns>
         public int PopBaloon(int x, int y)
         {
-            this.PopStrategy.PopBalloons(x, y, this);
+            int result = this.PopStrategy.PopBalloons(x, y, this);
             this.GravityStrategy.Apply(this);
-
-            //////changes the game state and returns boolean,indicating wheater the game is over
-            //if (!this.contents[x - 1, y - 1].IsActive)
-            //{
-            //    return 0;
-            //}
-            //else
-            //{
-            //    int thisMoveScore = 0;
-
-            //    //this.TurnCounter++;
-            //    BoardComponent currentCell = this.contents[x - 1, y - 1];
-            //    int top = x - 1;
-            //    int bottom = x - 1;
-            //    int left = y - 1;
-            //    int right = y - 1;
-            //    while (top > 0 && (this.contents[top - 1, y - 1] == currentCell))
-            //    {
-            //        top--;
-            //    }
-
-            //    while (bottom < 5 && this.contents[bottom + 1, y - 1] == currentCell)
-            //    {
-            //        bottom++;
-            //    }
-
-            //    while (left > 0 && this.contents[x - 1, left - 1] == currentCell)
-            //    {
-            //        left--;
-            //    }
-
-            //    while (right < 9 && this.contents[x - 1, right + 1] == currentCell)
-            //    {
-            //        right++;
-            //    }
-
-            //    for (int i = left; i <= right; i++)
-            //    {
-            //        ////first remove the elements on the same row and float the elemnts above down
-            //        if (x == 1)
-            //        {
-            //            this.contents[x - 1, i].IsActive = false;
-            //        }
-            //        else
-            //        {
-            //            for (int j = x - 1; j > 0; j--)
-            //            {
-            //                this.contents[j, i] = this.contents[j - 1, i];
-            //                this.contents[j - 1, i].IsActive = false;
-            //            }
-            //        }
-            //    }
-
-            //    ////if that's enough,just stop
-            //    if (top == bottom)
-            //    {
-            //        return 0;
-            //    }
-            //    else
-            //    {   ////otherwise fix the problematic column as well
-            //        for (int i = top; i > 0; --i)
-            //        {   ////first float the elements above down and replace them
-            //            this.contents[i + bottom - top, y - 1] = this.contents[i, y - 1];
-            //            this.contents[i, y - 1].IsActive = false;
-            //        }
-
-            //        if (bottom - top > top - 1)
-            //        {   ////is there are more baloons to pop in the column than elements above them, need to pop them as well
-            //            for (int i = top; i <= bottom; i++)
-            //            {
-            //                if (this.contents[i, y - 1] == currentCell)
-            //                {
-            //                    this.contents[i, y - 1].IsActive = false;
-            //                }
-            //            }
-            //        }
-                //}
-
-                return 0;
-            //}
+            Console.WriteLine("Result from move {0}", result);
+            return result;
         }
-
-        /// <summary>
-        /// This method accespts no parameters. It checks if the game has ended by searching for
-        /// entries in the playfield coordinates that are equal to 0.
-        /// </summary>
-        /// <returns>The method returns a boolean, which indicates wheather the game is over.</returns>
-        public bool GameHasEnded()
-        {
-            foreach (var s in this.contents)
-            {
-                if (s.IsActive)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }        
-
-        private bool EndGame() 
-        {
-            Console.WriteLine();
-            //this.PrintArray();
-            Console.WriteLine();
-            return this.GameHasEnded();
-        }
-
+        
         public BoardComponent GetElement(int row, int col)
         {
             return this.contents[row, col];
