@@ -9,16 +9,17 @@
             Console.WriteLine("check" + row + " " + col);
             int result = 0;
 
-            ProcessCell(row, col, board);
-
+            result += ProcessCell(row, col, board);
+            Console.WriteLine(result);
             return result;
         }
 
         private int ProcessCell(int row, int col, Gameboard board)
         {
             Console.WriteLine("Processing r{0}c{1}", row, col);
-            var subResult = 0;
             var currentCell = board.GetElement(row, col);
+            var subresult = 0;
+            
             currentCell.IsActive = false;
 
             if (row - 1 >= 0)
@@ -26,8 +27,8 @@
                 var upperCell = board.GetElement(row - 1, col);
 
                 if (upperCell.Color == currentCell.Color && upperCell.IsActive)
-                {
-                    ProcessCell(row - 1, col, board);
+                {                    
+                    subresult += ProcessCell(row - 1, col, board);
                 }
             }
 
@@ -37,7 +38,7 @@
 
                 if (lowerCell.Color == currentCell.Color && lowerCell.IsActive)
                 {
-                    ProcessCell(row + 1, col, board);
+                    subresult += ProcessCell(row + 1, col, board);
                 }
             }
 
@@ -47,7 +48,7 @@
 
                 if (leftCell.Color == currentCell.Color && leftCell.IsActive)
                 {
-                    ProcessCell(row, col - 1, board);
+                    subresult += ProcessCell(row, col - 1, board);
                 }
             }
 
@@ -57,11 +58,11 @@
 
                 if (rightCell.Color == currentCell.Color && rightCell.IsActive)
                 {
-                    ProcessCell(row, col + 1, board);
+                    subresult += ProcessCell(row, col + 1, board);
                 }
             }
 
-            return subResult;
+            return currentCell.GetValue() + subresult;
         }
     }
 }
