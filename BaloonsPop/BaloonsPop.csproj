@@ -60,6 +60,10 @@
     <Compile Include="Board\Strategies\NormalGravityStrategy.cs" />
     <Compile Include="Board\Strategies\PopStrategy.cs" />
     <Compile Include="Board\Strategies\RecursivePopStrategy.cs" />
+    <Compile Include="Menu\EndGame.cs" />
+    <Compile Include="Menu\GameMenu.cs" />
+    <Compile Include="Menu\MainMenu.cs" />
+    <Compile Include="Menu\NewGame.cs" />
     <Compile Include="Renderers\ConsoleRenderer.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Board\BoardComponent.cs" />

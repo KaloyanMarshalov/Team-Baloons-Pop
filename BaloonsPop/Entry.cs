@@ -21,14 +21,11 @@ namespace PoppingBaloons
     public class Entry
     {
         /// <summary>
-        /// The main method makes a new instance of the <see cref="Renderers.ConsoleRenderer"/>. And a new
-        /// instance of the <see cref="Game"/> class.
+        /// The main method that invokes <see cref="StartGame"/> method.
         /// </summary>
         public static void Main()
         {
-            ConsoleRenderer consoleRenderer = ConsoleRenderer.LoggerInstance;
-            Game game = new Game(10, 5, consoleRenderer);
-            game.Start();
-        }
+            Menu.GameMenu.StartGame();
+        }         
     }
 }
