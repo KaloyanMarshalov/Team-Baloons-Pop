@@ -55,6 +55,9 @@
     <Compile Include="Board\BalloonFactory\Balloon.cs" />
     <Compile Include="Board\BalloonFactory\BalloonMaker.cs" />
     <Compile Include="Board\BalloonFactory\BaloonColor.cs" />
+    <Compile Include="Board\BalloonFactory\BoardComponent.cs" />
+    <Compile Include="Board\BalloonFactory\BoardComponentDecorators\BoardComponentDecorator.cs" />
+    <Compile Include="Board\BalloonFactory\BoardComponentDecorators\BonusDecorator.cs" />
     <Compile Include="Board\Strategies\GravityStrategy.cs" />
     <Compile Include="Board\Strategies\NormalGravityStrategy.cs" />
     <Compile Include="Board\Strategies\PopStrategy.cs" />
