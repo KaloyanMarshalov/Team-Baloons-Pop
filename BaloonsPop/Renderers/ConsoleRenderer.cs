@@ -10,6 +10,7 @@ namespace PoppingBaloons.Renderers
 {
     using System;
 
+    using System.Collections.Generic;
     using PoppingBaloons.Board;
     using PoppingBaloons.Interfaces;
 
@@ -30,8 +31,14 @@ namespace PoppingBaloons.Renderers
         {
         }
 
+        public void RenderMessage(string message)
+        {
+            Console.WriteLine(message);
+        }
+
         public void RenderGameboard(Gameboard gameboard)
         {
+            Console.Clear();
             Console.WriteLine("    0 1 2 3 4 5 6 7 8 9");
             Console.WriteLine("    --------------------");
             for (int i = 0; i < gameboard.BoardHeight; i++)
@@ -41,7 +48,6 @@ namespace PoppingBaloons.Renderers
                 {
                     BoardComponent component = gameboard.GetElement(i, j);
                     this.SwitchConsoleColor(component.Color);
-                    //char currentChar = this.GetBaloonChar(baloonNumber);
                     if (!component.IsActive)
                     {
                         Console.Write('-');
@@ -53,13 +59,13 @@ namespace PoppingBaloons.Renderers
 
                     Console.ResetColor();
                     Console.Write(" ");
-
                 }
 
                 Console.WriteLine("| ");                
             }
 
             Console.WriteLine("    --------------------");
+            this.PrintListOfCommands();
             Console.WriteLine("Insert row and column or other command");
         }
 
@@ -108,5 +114,21 @@ namespace PoppingBaloons.Renderers
                     break;
             }
         }        
+
+        private void PrintListOfCommands()
+        {
+            var listOfCommands = new List<string>();
+
+            listOfCommands.Add("List of Commands");
+            listOfCommands.Add("---------------------------------------");
+            listOfCommands.Add("* Use 'top' to view the top scoreboard!");
+            listOfCommands.Add("* Use 'restart' to start a new game!");
+            listOfCommands.Add("* Use 'exit' to quit the game!\n");
+
+            foreach (var item in listOfCommands)
+            {
+                Console.WriteLine(item);
+            }
+        }
     }
 }

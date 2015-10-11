@@ -67,8 +67,7 @@
     <Compile Include="Board\BonusDecorator.cs" />
     <Compile Include="Scores\HighScore.cs" />
     <Compile Include="Interfaces\IRenderer.cs" />
-    <Compile Include="ListOfCommands.cs" />
-    <Compile Include="MainMenu.cs" />
+    <Compile Include="Entry.cs" />
     <Compile Include="Scores\Score.cs" />
     <Compile Include="Scores\ScoreComparer.cs" />
   </ItemGroup>
