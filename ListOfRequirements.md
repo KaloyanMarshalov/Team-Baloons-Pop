@@ -22,7 +22,7 @@
 	
 	### Loose coupling - Almost;
 	
-	### All default StyleCop rules should pass without any warning - Almost!
+	### All default StyleCop rules should pass without any warning - Done!
 	
 ## 2. Implement design patterns:
 	### Creational patterns:
